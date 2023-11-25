@@ -14,6 +14,7 @@
 		4A7945992B12158E0055592B /* nike_cpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7945982B12158E0055592B /* nike_cpTests.swift */; };
 		4A7945A32B12158E0055592B /* nike_cpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7945A22B12158E0055592B /* nike_cpUITests.swift */; };
 		4A7945A52B12158E0055592B /* nike_cpUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7945A42B12158E0055592B /* nike_cpUITestsLaunchTests.swift */; };
+		4A7A4DBE2B12247400F12C33 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A7A4DBD2B12247400F12C33 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		4A79459E2B12158E0055592B /* nike_cpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nike_cpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A7945A22B12158E0055592B /* nike_cpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nike_cpUITests.swift; sourceTree = "<group>"; };
 		4A7945A42B12158E0055592B /* nike_cpUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nike_cpUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4A7A4DBD2B12247400F12C33 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				4A7945872B12158A0055592B /* nike_cpApp.swift */,
 				4A7945892B12158A0055592B /* ContentView.swift */,
 				4A79458B2B12158D0055592B /* Assets.xcassets */,
+				4A7A4DBD2B12247400F12C33 /* Launch Screen.storyboard */,
 				4A79458D2B12158D0055592B /* Preview Content */,
 			);
 			path = nike_cp;
@@ -231,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A7A4DBE2B12247400F12C33 /* Launch Screen.storyboard in Resources */,
 				4A79458F2B12158D0055592B /* Preview Assets.xcassets in Resources */,
 				4A79458C2B12158D0055592B /* Assets.xcassets in Resources */,
 			);
@@ -422,6 +426,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -450,6 +455,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
