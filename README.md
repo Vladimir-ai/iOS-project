@@ -25,3 +25,7 @@ There are many recommendations (like [this](https://developer.apple.com/forums/t
 - it's better to create screens according to apple guidelines.
 - it's better to not mix UIKit ans SwiftUI (despite this possibility)
 - Try to call API from separate thread.
+
+## Known differences between this app and the Nike app
+
+- Tabbar icons are filled because Apple recommends (and forces developers) to use filled version for tabbar. (See [this manual](https://developer.apple.com/design/human-interface-guidelines/tab-bars))
