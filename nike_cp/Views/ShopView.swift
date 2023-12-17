@@ -15,13 +15,24 @@ struct ShopView : View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                SegmentedView(segments: ShopView.gender, selected: String(localized: "Men"))
-                Divider()
-                ScrollView
+            VStack {
+                VStack(spacing: 0)
                 {
+                    SegmentedView(segments: ShopView.gender, selected: String(localized: "Men"))
+                        .padding([.leading, .trailing], nil)
                     
+                    Divider()
                 }
+                
+                ScrollView {
+                    HStack {
+                        
+                        Text("Best Sellers")
+                        
+                        Spacer()
+                    }
+                }
+                .padding([.leading, .trailing], nil)
             }
             .navigationTitle(String(localized: "Shop"))
             .toolbar {
