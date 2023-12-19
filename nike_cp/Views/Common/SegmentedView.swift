@@ -26,7 +26,6 @@ struct SegmentedView: View {
                 } label: {
                     VStack {
                         Text(segment)
-                            .font(.footnote)
                             .fontWeight(.medium)
                             .foregroundColor(selected == segment ? .black : Color(uiColor: .systemGray))
                         ZStack {

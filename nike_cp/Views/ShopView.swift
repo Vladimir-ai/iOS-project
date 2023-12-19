@@ -15,7 +15,8 @@ struct ShopView : View {
     
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: 5) {
+                Spacer()
                 VStack(spacing: 0)
                 {
                     SegmentedView(segments: ShopView.gender, selected: String(localized: "Men"))
@@ -24,13 +25,19 @@ struct ShopView : View {
                     Divider()
                 }
                 
+                Spacer()
+                
                 ScrollView {
                     HStack {
-                        
-                        Text("Best Sellers")
+                        Text(String(localized: "Must-Haves, Best Sellers & More"))
+                            .font(.title3)
+                            .bold()
                         
                         Spacer()
                     }
+                    
+                    ShopRecomendGalleryView()
+                    
                 }
                 .padding([.leading, .trailing], nil)
             }
@@ -43,6 +50,8 @@ struct ShopView : View {
             }
         }
     }
+    
+    
     
     func searchShop()
     {
