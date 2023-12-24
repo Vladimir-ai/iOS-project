@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ShopView : View {
-    static let spacing = 20.0
-    static let gender = [String(localized: "Men"), String(localized: "Women"), String(localized: "Kids")]
-
-    @StateObject var ShowMgr = ShopMgr()
+    @Binding var userInfo: UserInfo
+    
+    static private let spacing = 20.0
+    static private let gender = [String(localized: "Men"), String(localized: "Women"), String(localized: "Kids")]
     
     var body: some View {
         NavigationStack {
@@ -36,7 +36,7 @@ struct ShopView : View {
                         Spacer()
                     }
                     
-                    ShopRecomendGalleryView()
+                    ShopRecomendGalleryView(userInfo: $userInfo)
                     
                 }
                 .padding([.leading, .trailing], nil)
@@ -61,6 +61,6 @@ struct ShopView : View {
 
 struct ShopView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopView()
+        ShopView(userInfo: .constant(UserInfo(usrID: 0, name: "Carl")))
     }
 }

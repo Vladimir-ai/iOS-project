@@ -9,26 +9,26 @@ import SwiftUI
 
 
 struct ImgWithTextView : View {
-    var imgName: String
-    var imgText: String.LocalizationValue
-    
-    init(imgName: String, imgText: String.LocalizationValue) {
-        self.imgName = imgName
+    var img: Image
+    var imgText: String
+   
+    init(img: Image, imgText: String) {
+        self.img = img
         self.imgText = imgText
     }
     
     var body : some View {
         VStack {
             HStack {
-                Image(imgName)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+                img
+                .resizable()
+                .aspectRatio(contentMode: .fit)
                
                 Spacer()
             }
             
             HStack {
-                Text(String(localized: imgText))
+                Text(imgText)
                     .foregroundColor(.black)
                 Spacer()
             }

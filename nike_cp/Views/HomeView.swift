@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView : View {
+    @Binding var userInfo: UserInfo
+    
     var body: some View {
         VStack {
             Label("Home screen stub", systemImage: "bolt.fill").labelStyle(.titleOnly)

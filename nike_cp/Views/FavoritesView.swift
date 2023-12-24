@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FavoritesView : View {
+    @Binding var userInfo: UserInfo
+    
     var body: some View {
         VStack {
             Label("Favourites view stub", systemImage: "bolt.fill").labelStyle(.titleOnly)
