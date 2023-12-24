@@ -10,6 +10,8 @@ As it says that SwiftUI is usually better - use this framework.
 ### Views pattern
 
 There are many recommendations (like [this](https://developer.apple.com/forums/thread/699003) to use MV (Model-View) template, so the following structure is used.
+To call API, use static member of model classes using UserInfo struct if needed.
+
 
 ## Directory structure
 

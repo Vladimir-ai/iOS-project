@@ -8,28 +8,30 @@
 import SwiftUI
 
 struct RootView: View {
+    @State var userInfo = UserInfo(usrID: 0, name: "Carl")
+    
     var body: some View {
         // Please note that every icon will be filled, not outlined as shown in the Figma.
         // @see https://developer.apple.com/design/human-interface-guidelines/tab-bars
         // > "Prefer filled symbols or icons for consistency with the platform."
         TabView {
-            HomeView().tabItem {
+            HomeView(userInfo: $userInfo).tabItem {
                 Label("Home", systemImage: "house")
             }
             
-            ShopView().tabItem {
+            ShopView(userInfo: $userInfo).tabItem {
                 Label("Shop", systemImage: "magnifyingglass")
             }
             
-            FavoritesView().tabItem {
+            FavoritesView(userInfo: $userInfo).tabItem {
                 Label("Favorites", systemImage: "heart")
             }
             
-            BagView().tabItem {
+            BagView(userInfo: $userInfo).tabItem {
                 Label("Bag", systemImage: "bag")
             }
             
-            ProfileView().tabItem {
+            ProfileView(userInfo: $userInfo).tabItem {
                 Label("Profile", systemImage: "person")
             }
         }

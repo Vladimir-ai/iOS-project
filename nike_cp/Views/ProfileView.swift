@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProfileView : View {
+    @Binding var userInfo: UserInfo
+    
     var body: some View {
         VStack {
             Label("Profile view stub", systemImage: "bolt.fill").labelStyle(.titleOnly)

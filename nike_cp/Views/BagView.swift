@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BagView: View {
+    @Binding var userInfo: UserInfo
+    
     var body: some View {
         VStack {
             Label("Bag view stub", systemImage: "bolt.fill").labelStyle(.titleOnly)

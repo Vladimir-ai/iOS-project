@@ -15,20 +15,22 @@
 		4A7945A32B12158E0055592B /* nike_cpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7945A22B12158E0055592B /* nike_cpUITests.swift */; };
 		4A7945A52B12158E0055592B /* nike_cpUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7945A42B12158E0055592B /* nike_cpUITestsLaunchTests.swift */; };
 		4A7A4DBE2B12247400F12C33 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A7A4DBD2B12247400F12C33 /* Launch Screen.storyboard */; };
+		4A7E8BE72B385B9A0054F5C7 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E8BE62B385B9A0054F5C7 /* Product.swift */; };
+		4A7E8BE92B38620A0054F5C7 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E8BE82B38620A0054F5C7 /* UserInfo.swift */; };
+		4A7E8BEB2B38650F0054F5C7 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E8BEA2B38650F0054F5C7 /* LoginAPI.swift */; };
 		4A8016432B2E1D40008262F7 /* SegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8016422B2E1D40008262F7 /* SegmentedView.swift */; };
 		4A83B3AB2B30D9E3003DDA4B /* ShopAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A83B3AA2B30D9E3003DDA4B /* ShopAPI.swift */; };
 		4A8490F42B31F71600B23A8E /* ImgWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8490F32B31F71600B23A8E /* ImgWithTextView.swift */; };
 		4A8490F72B31F91300B23A8E /* ShopRecomendGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8490F62B31F91300B23A8E /* ShopRecomendGalleryView.swift */; };
-		4A8490F92B32016600B23A8E /* ShopBestSellersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8490F82B32016600B23A8E /* ShopBestSellersView.swift */; };
-		4A8490FB2B32109400B23A8E /* ShopFeaturedInNikeAir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8490FA2B32109400B23A8E /* ShopFeaturedInNikeAir.swift */; };
-		4A8490FD2B32157500B23A8E /* ShopNewRunningEssentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8490FC2B32157500B23A8E /* ShopNewRunningEssentials.swift */; };
-		4A899C742B28D7A50042EE8A /* ShopMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A899C732B28D7A50042EE8A /* ShopMgr.swift */; };
+		4A8703F42B36E8B700162E8A /* PhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8703F32B36E8B700162E8A /* PhotoList.swift */; };
+		4A8703F62B36E97600162E8A /* Recomendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8703F52B36E97500162E8A /* Recomendation.swift */; };
+		4A8703F82B36ECC600162E8A /* ShopRecomendationGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8703F72B36ECC600162E8A /* ShopRecomendationGridView.swift */; };
+		4A8703FA2B37010A00162E8A /* StubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8703F92B37010A00162E8A /* StubAPI.swift */; };
 		4AFC5F842B2320940000B62C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC5F832B2320940000B62C /* HomeView.swift */; };
 		4AFC5F862B23216E0000B62C /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC5F852B23216E0000B62C /* ShopView.swift */; };
 		4AFC5F882B2321C30000B62C /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC5F872B2321C30000B62C /* FavoritesView.swift */; };
 		4AFC5F8B2B2322570000B62C /* BagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC5F8A2B2322570000B62C /* BagView.swift */; };
 		4AFC5F8D2B2322C00000B62C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC5F8C2B2322C00000B62C /* ProfileView.swift */; };
-		4AFC5F902B2340170000B62C /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 4AFC5F8F2B2340170000B62C /* .gitkeep */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,21 +62,23 @@
 		4A7945A22B12158E0055592B /* nike_cpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nike_cpUITests.swift; sourceTree = "<group>"; };
 		4A7945A42B12158E0055592B /* nike_cpUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nike_cpUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4A7A4DBD2B12247400F12C33 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		4A7E8BE62B385B9A0054F5C7 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		4A7E8BE82B38620A0054F5C7 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		4A7E8BEA2B38650F0054F5C7 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		4A8016422B2E1D40008262F7 /* SegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedView.swift; sourceTree = "<group>"; };
 		4A83B3AA2B30D9E3003DDA4B /* ShopAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopAPI.swift; sourceTree = "<group>"; };
 		4A8490F32B31F71600B23A8E /* ImgWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgWithTextView.swift; sourceTree = "<group>"; };
 		4A8490F62B31F91300B23A8E /* ShopRecomendGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopRecomendGalleryView.swift; sourceTree = "<group>"; };
-		4A8490F82B32016600B23A8E /* ShopBestSellersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBestSellersView.swift; sourceTree = "<group>"; };
-		4A8490FA2B32109400B23A8E /* ShopFeaturedInNikeAir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopFeaturedInNikeAir.swift; sourceTree = "<group>"; };
-		4A8490FC2B32157500B23A8E /* ShopNewRunningEssentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopNewRunningEssentials.swift; sourceTree = "<group>"; };
-		4A899C732B28D7A50042EE8A /* ShopMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopMgr.swift; sourceTree = "<group>"; };
+		4A8703F32B36E8B700162E8A /* PhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoList.swift; sourceTree = "<group>"; };
+		4A8703F52B36E97500162E8A /* Recomendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recomendation.swift; sourceTree = "<group>"; };
+		4A8703F72B36ECC600162E8A /* ShopRecomendationGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopRecomendationGridView.swift; sourceTree = "<group>"; };
+		4A8703F92B37010A00162E8A /* StubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAPI.swift; sourceTree = "<group>"; };
 		4AFC5F832B2320940000B62C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4AFC5F852B23216E0000B62C /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
 		4AFC5F872B2321C30000B62C /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		4AFC5F8A2B2322570000B62C /* BagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagView.swift; sourceTree = "<group>"; };
 		4AFC5F8C2B2322C00000B62C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		4AFC5F8E2B232E190000B62C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		4AFC5F8F2B2340170000B62C /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,11 +178,8 @@
 		4A899C722B28D5BF0042EE8A /* ShopView */ = {
 			isa = PBXGroup;
 			children = (
-				4A899C732B28D7A50042EE8A /* ShopMgr.swift */,
 				4A8490F62B31F91300B23A8E /* ShopRecomendGalleryView.swift */,
-				4A8490F82B32016600B23A8E /* ShopBestSellersView.swift */,
-				4A8490FA2B32109400B23A8E /* ShopFeaturedInNikeAir.swift */,
-				4A8490FC2B32157500B23A8E /* ShopNewRunningEssentials.swift */,
+				4A8703F72B36ECC600162E8A /* ShopRecomendationGridView.swift */,
 			);
 			path = ShopView;
 			sourceTree = "<group>";
@@ -202,6 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				4A83B3AA2B30D9E3003DDA4B /* ShopAPI.swift */,
+				4A8703F92B37010A00162E8A /* StubAPI.swift */,
+				4A7E8BEA2B38650F0054F5C7 /* LoginAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -209,7 +212,10 @@
 		4AFC5F822B230BC50000B62C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4AFC5F8F2B2340170000B62C /* .gitkeep */,
+				4A8703F32B36E8B700162E8A /* PhotoList.swift */,
+				4A8703F52B36E97500162E8A /* Recomendation.swift */,
+				4A7E8BE62B385B9A0054F5C7 /* Product.swift */,
+				4A7E8BE82B38620A0054F5C7 /* UserInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -321,7 +327,6 @@
 				4A7A4DBE2B12247400F12C33 /* Launch Screen.storyboard in Resources */,
 				4A79458F2B12158D0055592B /* Preview Assets.xcassets in Resources */,
 				4A79458C2B12158D0055592B /* Assets.xcassets in Resources */,
-				4AFC5F902B2340170000B62C /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,18 +351,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A8703FA2B37010A00162E8A /* StubAPI.swift in Sources */,
+				4A8703F82B36ECC600162E8A /* ShopRecomendationGridView.swift in Sources */,
 				4AFC5F862B23216E0000B62C /* ShopView.swift in Sources */,
 				4AFC5F8D2B2322C00000B62C /* ProfileView.swift in Sources */,
-				4A8490FB2B32109400B23A8E /* ShopFeaturedInNikeAir.swift in Sources */,
+				4A7E8BEB2B38650F0054F5C7 /* LoginAPI.swift in Sources */,
 				4A8490F72B31F91300B23A8E /* ShopRecomendGalleryView.swift in Sources */,
-				4A8490F92B32016600B23A8E /* ShopBestSellersView.swift in Sources */,
-				4A8490FD2B32157500B23A8E /* ShopNewRunningEssentials.swift in Sources */,
+				4A7E8BE72B385B9A0054F5C7 /* Product.swift in Sources */,
+				4A8703F42B36E8B700162E8A /* PhotoList.swift in Sources */,
+				4A8703F62B36E97600162E8A /* Recomendation.swift in Sources */,
 				4A8490F42B31F71600B23A8E /* ImgWithTextView.swift in Sources */,
 				4A8016432B2E1D40008262F7 /* SegmentedView.swift in Sources */,
 				4AFC5F882B2321C30000B62C /* FavoritesView.swift in Sources */,
+				4A7E8BE92B38620A0054F5C7 /* UserInfo.swift in Sources */,
 				4A79458A2B12158A0055592B /* RootView.swift in Sources */,
 				4A7945882B12158A0055592B /* nike_cpApp.swift in Sources */,
-				4A899C742B28D7A50042EE8A /* ShopMgr.swift in Sources */,
 				4AFC5F8B2B2322570000B62C /* BagView.swift in Sources */,
 				4A83B3AB2B30D9E3003DDA4B /* ShopAPI.swift in Sources */,
 				4AFC5F842B2320940000B62C /* HomeView.swift in Sources */,

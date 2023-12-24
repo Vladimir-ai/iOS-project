@@ -8,48 +8,38 @@
 import SwiftUI
 
 struct ShopRecomendGalleryView : View {
-    
-    private let galleryList = [
-        GalleryItem(destinationView: AnyView(ShopBestSellersView()), imgName: "ImageBestSellers", imgText: "Best Sellers"),
-        GalleryItem(destinationView: AnyView(ShopFeaturedInNikeAirView()), imgName: "ImageFeaturedInNikeAir", imgText: "Featured in Nike Air"),
-        GalleryItem(destinationView: AnyView(ShopNewRunningEssentials()), imgName: "ImageNewRunningEssentials", imgText: "New Running Essentials")
-    ]
+    @Binding var userInfo: UserInfo
+    @State private var recomendations: [Recomendation] = []
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false)
         {
             HStack {
-                ForEach(galleryList) { galleryItem in
-                    NavigationLink {
-                        galleryItem.destinationView
+                if (recomendations.count > 0)
+                {
+                    ForEach(recomendations) { recomendation in
+                        NavigationLink {
+                            ShopRecomendationGridView(recomendation: recomendation)
+                        }
+                        label:
+                        {
+                            ImgWithTextView(img: recomendation.photo, imgText: recomendation.name)
+                        }
                     }
-                label:
-                    {
-                        ImgWithTextView(imgName: galleryItem.imgName, imgText: galleryItem.imgText)
+                }
+                else
+                {
+                    Text("Loading...").task {
+                        await recomendations = Recomendation.getAllRecomendationByUserInfo(user: userInfo)
                     }
                 }
             }
         }
     }
 }
-            
-            
-private struct GalleryItem: Identifiable {
-    let id = UUID()
-    var destinationView: AnyView
-    var imgName: String
-    var imgText: String.LocalizationValue
-    
-    init(destinationView: AnyView, imgName: String, imgText: String.LocalizationValue) {
-        self.destinationView =  destinationView
-        self.imgName = imgName
-        self.imgText = imgText
-    }
-}
-
 
 struct ShopRecomendGalleryView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopRecomendGalleryView()
+        ShopRecomendGalleryView(userInfo: .constant(UserInfo(usrID: 0, name: "Carl")))
     }
 }
