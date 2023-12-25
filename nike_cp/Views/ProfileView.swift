@@ -13,6 +13,8 @@ struct ProfileView : View {
     var body: some View {
         VStack {
             Label("Profile view stub", systemImage: "bolt.fill").labelStyle(.titleOnly)
-        }
+        }.toolbarBackground(.white, for: .tabBar)
+         .toolbarBackground(.visible, for: .tabBar)
+            
     }
 }

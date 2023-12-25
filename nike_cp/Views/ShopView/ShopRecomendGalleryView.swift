@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ShopRecomendGalleryView : View {
     @Binding var userInfo: UserInfo
+    @Binding var gender: String
+    @Binding var shopAPI: ShopAPI
     @State private var recomendations: [Recomendation] = []
     
     var body: some View {
@@ -21,7 +23,7 @@ struct ShopRecomendGalleryView : View {
                         NavigationLink {
                             ShopRecomendationGridView(recomendation: recomendation)
                         }
-                        label:
+                    label:
                         {
                             ImgWithTextView(img: recomendation.photo, imgText: recomendation.name)
                         }
@@ -29,10 +31,13 @@ struct ShopRecomendGalleryView : View {
                 }
                 else
                 {
-                    Text("Loading...").task {
-                        await recomendations = Recomendation.getAllRecomendationByUserInfo(user: userInfo)
+                    ProgressView().task {
+                        await recomendations = shopAPI.getAllRecomendations(userInfo: userInfo)
                     }
                 }
+            }
+            .onChange(of: gender){ _ in
+                recomendations = []
             }
         }
     }
@@ -40,6 +45,6 @@ struct ShopRecomendGalleryView : View {
 
 struct ShopRecomendGalleryView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopRecomendGalleryView(userInfo: .constant(UserInfo(usrID: 0, name: "Carl")))
+        ShopRecomendGalleryView(userInfo: .constant(UserInfo(usrID: 0, name: "Carl")), gender: .constant("Men"), shopAPI: .constant(ShopAPI()))
     }
 }
