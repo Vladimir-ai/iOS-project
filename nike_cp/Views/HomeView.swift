@@ -13,6 +13,8 @@ struct HomeView : View {
     var body: some View {
         VStack {
             Label("Home screen stub", systemImage: "bolt.fill").labelStyle(.titleOnly)
-        }
+        }.toolbarBackground(.white, for: .tabBar)
+         .toolbarBackground(.visible, for: .tabBar)
+            
     }
 }

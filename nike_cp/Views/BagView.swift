@@ -13,6 +13,8 @@ struct BagView: View {
     var body: some View {
         VStack {
             Label("Bag view stub", systemImage: "bolt.fill").labelStyle(.titleOnly)
-        }
+        }.toolbarBackground(.white, for: .tabBar)
+         .toolbarBackground(.visible, for: .tabBar)
+            
     }
 }

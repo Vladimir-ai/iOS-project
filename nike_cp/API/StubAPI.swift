@@ -9,7 +9,7 @@ import Foundation
 
 class StubAPI {
     let userId: UInt64 = 0
-    let loadingDurationSec = 3.0
+    let loadingDurationSec = 0.5
 
     func waitBeforeReturn() async -> Void {
         do {

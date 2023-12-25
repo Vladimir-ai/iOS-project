@@ -8,15 +8,9 @@
 import SwiftUI
 
 struct SegmentedView: View {
-
-    let segments: [String]
-    @State private var selected: String
+    var segments: [String]
+    @Binding var selected: String
     @Namespace var name
-    
-    init(segments: [String], selected: String) {
-        self.segments = segments
-        self.selected = selected
-    }
 
     var body: some View {
         HStack() {
@@ -55,6 +49,6 @@ struct SegmentedView_Previews: PreviewProvider {
     static let gender = ["Men", "Women", "Kids"]
 
     static var previews: some View {
-        SegmentedView(segments: gender, selected: "Men")
+        SegmentedView(segments: gender, selected: .constant("Men"))
     }
 }

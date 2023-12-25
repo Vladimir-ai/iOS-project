@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ShopView : View {
+    @State private var selectedGender = "Men"
+    @State private var shopAPI = ShopAPI()
     @Binding var userInfo: UserInfo
     
     static private let spacing = 20.0
-    static private let gender = [String(localized: "Men"), String(localized: "Women"), String(localized: "Kids")]
+    static private let gender = ["Men", "Women", "Kids"]
     
     var body: some View {
         NavigationStack {
@@ -19,7 +21,7 @@ struct ShopView : View {
                 Spacer()
                 VStack(spacing: 0)
                 {
-                    SegmentedView(segments: ShopView.gender, selected: String(localized: "Men"))
+                    SegmentedView(segments: ShopView.gender, selected: $selectedGender)
                         .padding([.leading, .trailing], nil)
                     
                     Divider()
@@ -36,8 +38,9 @@ struct ShopView : View {
                         Spacer()
                     }
                     
-                    ShopRecomendGalleryView(userInfo: $userInfo)
-                    
+                    ShopRecomendGalleryView(userInfo: $userInfo, gender: $selectedGender, shopAPI: $shopAPI)
+                
+                    ShopCommonRecomendationView(gender: $selectedGender, shopAPI: $shopAPI)
                 }
                 .padding([.leading, .trailing], nil)
             }
@@ -48,9 +51,10 @@ struct ShopView : View {
                         .labelStyle(.iconOnly)
                 }
             }
-        }
+        }.toolbarBackground(.white, for: .tabBar)
+         .toolbarBackground(.visible, for: .tabBar)
+            
     }
-    
     
     
     func searchShop()
