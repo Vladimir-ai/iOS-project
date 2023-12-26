@@ -56,7 +56,29 @@ Note that before login images are stored in the phome memory
 - getCommonCategoriesByGender(gender: string): api/shop/get_common_categories
   Returns dict with genders and images for them
   Ret codes are the same as for `getAllCategoriesByUserID`, but invalid gender triggers error code.
-- getProductViewListByCategoryId(user_id: uint64, catergory_id: uint64): api/shop/get_preview_list
+- getSubcategoriesByCategoryId(user_id: uint64, category_id: uint64): api/shop/get_subcategories_list
+  Returns list os subcategories
+  Ret codes:
+  - 200
+    JSON:
+    [Subcategory]
+    Subcategory:
+    - id: uint64
+    - name: String
+  - 400 - invalid category_id
+  - 401 - Bad user_id
+- getProductTypesBySubcategoryId(user_id: uint64, subcategory_id): api/shop/get_product_types_by_subcategories
+  Returns list of product types
+  Ret codes:
+  - 200
+    JSON
+    [ProductType]
+    ProductType:
+    - id: uint64
+    - name: String
+  - 400 - invalid subcategory_id
+  - 401 - invalid user_id
+- getProductsPreviewsByproductTypeId(user_id: uint64, product_type_id: uint64): api/shop/get_preview_list_by_product_type
   Returns list of product previews.
   Ret codes:
   - 200
