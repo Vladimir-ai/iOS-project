@@ -130,6 +130,13 @@ Note that before login images are stored in the phome memory
   - 200 - OK
   - 401 - bad user_id
 
+### Favorites API
+- getFavoritesList(user_id: uint64): api/favorites/get_product_list
+  Ret codes:
+  - 200 - OK
+    JSON:
+    [ProductPreview]
+  - 401 - bad user_id
     
 ### Home API
 - get_recomended_products(user_id: uint64): api/home/recomended_products
