@@ -11,7 +11,7 @@ struct ShopRecomendGalleryView : View {
     @Binding var userInfo: UserInfo
     @Binding var gender: String
     @Binding var shopAPI: ShopAPI
-    @State private var recomendations: [Recomendation] = []
+    @State private var recomendations: [Category] = []
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false)
@@ -32,7 +32,7 @@ struct ShopRecomendGalleryView : View {
                 else
                 {
                     ProgressView().task {
-                        await recomendations = shopAPI.getAllRecomendations(userInfo: userInfo)
+                        await recomendations = shopAPI.getAllCategoriesByUserID(userInfo: userInfo)
                     }
                 }
             }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShopRecomendationGridView: View {
-    @State var recomendation: Recomendation
+    @State var recomendation: Category
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -53,6 +53,6 @@ struct ShopRecomendationGridView: View {
 struct ShopRecomendationGridView_Previews: PreviewProvider {
     static var previews: some View {
         ShopRecomendationGridView(recomendation:
-            Recomendation(id: 0, name: "Test", photo: Image("ImageBestSellers")))
+            Category(id: 0, name: "Test", photo: Image("ImageBestSellers")))
     }
 }

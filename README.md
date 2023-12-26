@@ -121,7 +121,6 @@ Note that before login images are stored in the phome memory
     - price: float
     - liked: bool
     - short_description: String
-    - size: String
   - 400: bad category_id
   - 401: bad user_id
 

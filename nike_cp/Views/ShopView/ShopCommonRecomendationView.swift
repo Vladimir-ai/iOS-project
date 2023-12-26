@@ -11,7 +11,7 @@ struct ShopCommonRecomendationView: View {
     @Binding var gender: String
     @Binding var shopAPI: ShopAPI
     
-    @State private var recommendationsList: [Recomendation] = []
+    @State private var recommendationsList: [Category] = []
     
     var body: some View {
         if recommendationsList.count > 0 {
@@ -34,7 +34,7 @@ struct ShopCommonRecomendationView: View {
         else
         {
             ProgressView().task {
-                recommendationsList = await shopAPI.getCommonRecomendationsByGender(gender: gender)
+                recommendationsList = await shopAPI.getCommonCategoriesByGender(gender: gender)
             }
         }
     }
