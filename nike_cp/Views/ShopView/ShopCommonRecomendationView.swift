@@ -34,7 +34,7 @@ struct ShopCommonRecomendationView: View {
         else
         {
             ProgressView().task {
-                recommendationsList = await shopAPI.getCommonRecomendationsByGender(gender: gender)
+                recommendationsList = await shopAPI.getCommonCategoriesByGender(gender: gender)
             }
         }
     }

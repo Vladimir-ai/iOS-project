@@ -32,7 +32,7 @@ struct ShopRecomendGalleryView : View {
                 else
                 {
                     ProgressView().task {
-                        await recomendations = shopAPI.getAllRecomendations(userInfo: userInfo)
+                        await recomendations = shopAPI.getAllCategoriesByUserID(userInfo: userInfo)
                     }
                 }
             }

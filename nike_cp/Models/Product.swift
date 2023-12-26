@@ -37,16 +37,49 @@ class ProductPreview: Identifiable {
     }
 }
 
+struct Size {
+    var type: String
+    var size: Float
+    
+    init(type: String, size: Float) {
+        self.type = type
+        self.size = size
+    }
+}
+
+class ProductPreviewWithSize: ProductPreview {
+    var size: Size
+    
+    
+    init(id: UInt64, name: String, price: Float, shortDescription: String, liked: Bool, photos: [Image], size: Size) {
+        self.size = size
+        super.init(id: id, name: name, price: price, shortDescription: shortDescription, liked: liked, photos: photos)
+    }
+    
+    init(other: ProductPreview, size: Size) {
+        self.size = size
+        super.init(id: other.id, name: other.name, price: other.price, shortDescription: other.shortDescription, liked: other.liked, photos: other.photos)
+    }
+    
+    init(other: ProductPreviewWithSize) {
+        self.size = other.size
+        super.init(id: other.id, name: other.name, price: other.price, shortDescription: other.shortDescription, liked: other.liked, photos: other.photos)
+    }
+}
+
 class Product: ProductPreview {
     var fullDescription: String
+    var sizes: [Size]
     
-    init(previewProduct: ProductPreview, fullDescription: String) {
+    init(previewProduct: ProductPreview, fullDescription: String, sizes: [Size]) {
         self.fullDescription = fullDescription
+        self.sizes = sizes
         super.init(other: previewProduct)
     }
     
-    init(id: UInt64, name: String, price: Float, shortDescription: String, liked: Bool, photos: [Image], fullDescription: String) {
+    init(id: UInt64, name: String, price: Float, shortDescription: String, liked: Bool, photos: [Image], fullDescription: String, sizes: [Size]) {
         self.fullDescription = fullDescription
+        self.sizes = sizes
         super.init(id: id, name: name, price: price, shortDescription: shortDescription, liked: liked, photos: photos)
     }
 }

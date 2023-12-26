@@ -33,27 +33,43 @@ class ShopAPI: StubAPI {
                  Category(id: 17, name: "Sale & Offers", photo: Image("kidsSale"))]
     ]
     
-    func getAllRecomendations(userInfo: UserInfo) async -> [Category] {
+    func getAllCategoriesByUserID(userInfo: UserInfo) async -> [Category] {
         await super.waitBeforeReturn()
         return ShopAPI.recomendationList
     }
     
     
-    func getCommonRecomendationsByGender(gender: String) async -> [Category] {
+    func getCommonCategoriesByGender(gender: String) async -> [Category] {
         await super.waitBeforeReturn()
         assert(ShopAPI.commonRecomendations.keys.contains(gender))
         return ShopAPI.commonRecomendations[gender].unsafelyUnwrapped
     }
     
+    // Gender should be included into ID
+    func getSubcategoriesByCategoryID(userID: UInt64, categoryID: UInt64) async -> [SubCategory] {
+        //TODO: Add code
+        return []
+    }
     
-    func getProductPreviewListByRecomendataionId(id: UInt64) async -> [ProductPreview] {
-        await super.waitBeforeReturn()
-        return [
-            ProductPreview(id: 0,
-                           name: ShopAPI.recomendationList[Int(id)].name,
-                           price: 300.300,
-                           shortDescription: "Blah blah",
-                           liked: false,
-                           photos: [ShopAPI.recomendationList[Int(id)].photo])]
+    // Gender should be included into ID
+    func getProductTypesByCategoryID(userID: UInt64, subCategoryID: UInt64) async -> [ProductType] {
+        //TODO: Add code
+        return []
+    }
+    
+    // Gender should be included into ID
+    func getProductPreviewsByProductTypeID(userID: UInt64, productTypeID: UInt64) async -> [ProductType] {
+        //TODO: Add code
+        return []
+    }
+    
+    func getFullProductInfo(userID: UInt64, productID: UInt64) async -> Product {
+        // TODO: Add code
+        return Product(id: 0, name: "a", price: 0, shortDescription: "a", liked: false, photos: [Image("kidsSale")], fullDescription: "AAA", sizes: [Size(type: "EU", size: 10)])
+    }
+
+    func searchProducts(userID: UInt64, searchPattern: String, categoryID: UInt64!) async -> [ProductPreview] {
+        // TODO: Add code
+        return []
     }
 }

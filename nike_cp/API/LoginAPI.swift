@@ -9,8 +9,13 @@ import Foundation
 
 class LoginAPI: StubAPI {
    
-    func tryLogin(mail: String, pass: String) async -> UserInfo! {
+    func login(mail: String, pass: String) async -> UserInfo! {
         await super.waitBeforeReturn()
         return UserInfo(usrID: userId, name: "Carl")
     }
+    
+    func logout() async -> Void {
+        // TODO: Add code
+    }
+    
 }
