@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Recomendation: Identifiable {
+struct Category: Identifiable {
     var id: UInt64
     var name: String
     var photo: Image
