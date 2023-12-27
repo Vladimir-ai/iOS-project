@@ -10,7 +10,7 @@ import SwiftUI
 struct ShopRecomendGalleryView : View {
     @Binding var userInfo: UserInfo
     @Binding var gender: String
-    @State private var recomendations: [Category] = []
+    @State private var recomendedCategoriesList: [Category] = []
     
     private let shopAPI = APIFactory.getShopAPI()
     
@@ -18,27 +18,27 @@ struct ShopRecomendGalleryView : View {
         ScrollView(.horizontal, showsIndicators: false)
         {
             HStack {
-                if (recomendations.count > 0)
+                if (recomendedCategoriesList.count > 0)
                 {
-                    ForEach(recomendations) { recomendation in
+                    ForEach(recomendedCategoriesList) { category in
                         NavigationLink {
-                            ShopRecomendationGridView(recomendation: recomendation)
+                            ShopSubCategoryListView(category: category)
                         }
                     label:
                         {
-                            ImgWithTextView(img: recomendation.photo, imgText: recomendation.name)
+                            ImgWithTextView(img: category.photo, imgText: category.name)
                         }
                     }
                 }
                 else
                 {
                     ProgressView().task {
-                        await recomendations = shopAPI.getAllCategoriesByUserID(userInfo: userInfo)
+                        await recomendedCategoriesList = shopAPI.getAllCategoriesByUserID(userInfo: userInfo)
                     }
                 }
             }
             .onChange(of: gender){ _ in
-                recomendations = []
+                recomendedCategoriesList = []
             }
         }
     }

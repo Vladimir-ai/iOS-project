@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct ShopRecomendationGridView: View {
-    @State var recomendation: Category
+struct ShopSubCategoryGridView: View {
+    var subCategory: SubCategory
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -18,7 +18,7 @@ struct ShopRecomendationGridView: View {
                 
             }
         }
-        .navigationTitle(recomendation.name)
+        .navigationTitle(subCategory.name)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading)
             {
@@ -52,7 +52,6 @@ struct ShopRecomendationGridView: View {
 
 struct ShopRecomendationGridView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopRecomendationGridView(recomendation:
-            Category(id: 0, name: "Test", photo: Image("ImageBestSellers")))
+        ShopSubCategoryGridView(subCategory: SubCategory(id: 0, name: "Test"))
     }
 }

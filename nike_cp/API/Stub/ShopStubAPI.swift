@@ -51,8 +51,13 @@ class ShopStubAPI: StubAPI, ShopProto {
     
     // Gender should be included into ID
     func getSubcategoriesByCategoryID(userID: UInt64, categoryID: UInt64) async -> [SubCategory] {
-        //TODO: Add code
-        return []
+        await super.waitBeforeReturn()
+        // Ignore -- its just stub
+        return [SubCategory(id: 0, name: "All shoes"),
+                SubCategory(id: 1, name: "Jordan"),
+                SubCategory(id: 2, name: "Running"),
+                SubCategory(id: 3, name: "Football"),
+                SubCategory(id: 4, name: "Basketball")]
     }
     
     // Gender should be included into ID

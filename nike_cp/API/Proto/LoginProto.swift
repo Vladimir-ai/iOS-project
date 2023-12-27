@@ -12,4 +12,6 @@ protocol LoginProto {
     func login(mail: String, pass: String) async -> UserInfo!
     
     func logout() async -> Void
+    
+    func getCurrentLoggedInUser() -> UserInfo!
 }
