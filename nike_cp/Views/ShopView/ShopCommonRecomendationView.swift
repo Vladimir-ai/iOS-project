@@ -10,32 +10,32 @@ import SwiftUI
 struct ShopCommonRecomendationView: View {
     @Binding var gender: String
     private let shopAPI = APIFactory.getShopAPI()
+    private let loginAPI = APIFactory.getLoginAPI()
     
-    
-    @State private var recommendationsList: [Category] = []
+    @State private var categoryList: [Category] = []
     
     var body: some View {
-        if recommendationsList.count > 0 {
+        if categoryList.count > 0 {
             VStack {
-                ForEach(recommendationsList) { recomendation in
+                ForEach(categoryList) { category in
                     NavigationLink {
-                        ShopRecomendationGridView(recomendation: recomendation)
+                        ShopSubCategoryListView(category: category)
                     }
                     label:
                     {
-                        recomendation.photo
+                        category.photo
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }
                 }
             }.onChange(of: gender) { _ in
-                    recommendationsList = []
+                    categoryList = []
             }
         }
         else
         {
             ProgressView().task {
-                recommendationsList = await shopAPI.getCommonCategoriesByGender(gender: gender)
+                categoryList = await shopAPI.getCommonCategoriesByGender(gender: gender)
             }
         }
     }
