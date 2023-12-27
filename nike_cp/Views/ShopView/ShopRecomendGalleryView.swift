@@ -10,8 +10,9 @@ import SwiftUI
 struct ShopRecomendGalleryView : View {
     @Binding var userInfo: UserInfo
     @Binding var gender: String
-    @Binding var shopAPI: ShopAPI
     @State private var recomendations: [Category] = []
+    
+    private let shopAPI = APIFactory.getShopAPI()
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false)
@@ -45,6 +46,6 @@ struct ShopRecomendGalleryView : View {
 
 struct ShopRecomendGalleryView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopRecomendGalleryView(userInfo: .constant(UserInfo(usrID: 0, name: "Carl")), gender: .constant("Men"), shopAPI: .constant(ShopAPI()))
+        ShopRecomendGalleryView(userInfo: .constant(UserInfo(usrID: 0, name: "Carl")), gender: .constant("Men"))
     }
 }

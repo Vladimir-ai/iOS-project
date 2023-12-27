@@ -8,7 +8,11 @@
 import Foundation
 import SwiftUI
 
-class HomeAPI: StubAPI {
+class HomeStubAPI: StubAPI, HomeProto {
+    static let sharedAPIInstance = HomeStubAPI()
+    
+    private override init() {}
+    
     func getRecomendedProducts(userID: UInt64) async -> [ProductPreview] {
         // TODO: Add code
         return []
