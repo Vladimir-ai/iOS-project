@@ -40,7 +40,7 @@ Note that before login images are stored in the phome memory
 
 
 ### Shop API
-- getAllCategoriesByUserID(user_id: uint64): api/shop/get_all_categories
+- getAllMustHaveAndMoreCategoriesByUserID(user_id: uint64): api/shop/get_must_haves_categories
   Returns dict with genders, and category images for them
   Category should be stored on back-end
   Ret codes:
@@ -51,12 +51,13 @@ Note that before login images are stored in the phome memory
         - Id: uint64
         - Name: Str
         - Image: Base64?
-  - 400 - bad user_id
+  - 401 - bad user_id
     Empty.
 - getCommonCategoriesByGender(gender: string): api/shop/get_common_categories
-  Returns dict with genders and images for them
-  Ret codes are the same as for `getAllCategoriesByUserID`, but invalid gender triggers error code.
-- getSubcategoriesByCategoryId(user_id: uint64, category_id: uint64): api/shop/get_subcategories_list
+  Returns dict with genders and images for them.
+  Only three genders are possible: `men`, `women`, `kids`
+  Ret codes are the same as for `getAllCategoriesByUserID`, but invalid gender triggers 400 error code.
+- getSubcategoriesByCategoryId(category_id: uint64): api/shop/get_subcategories_list
   Returns list os subcategories
   Ret codes:
   - 200
@@ -66,8 +67,7 @@ Note that before login images are stored in the phome memory
     - id: uint64
     - name: String
   - 400 - invalid category_id
-  - 401 - Bad user_id
-- getProductTypesBySubcategoryId(user_id: uint64, subcategory_id): api/shop/get_product_types_by_subcategories
+- getProductTypesBySubcategoryId(subcategory_id): api/shop/get_product_types_by_subcategories
   Returns list of product types
   Ret codes:
   - 200
@@ -77,8 +77,7 @@ Note that before login images are stored in the phome memory
     - id: uint64
     - name: String
   - 400 - invalid subcategory_id
-  - 401 - invalid user_id
-- getProductsPreviewsByproductTypeId(user_id: uint64, product_type_id: uint64): api/shop/get_preview_list_by_product_type
+- getProductsPreviewsByProductTypeId(user_id: uint64, product_type_id: uint64): api/shop/get_preview_list_by_product_type
   Returns list of product previews.
   Ret codes:
   - 200
@@ -87,11 +86,11 @@ Note that before login images are stored in the phome memory
     ProductPreview: 
     - id: uint64
     - name: String
-    - photos: [Image] (only one image)
+    - photos: Image (only one image)
     - price: float
     - liked: bool
+    - state: int : (enum: sold out, available, upcoming)
     - short_description: String
-    - size: String
   - 400 - Bad category_id
   - 401 - Bad user_id
 - getFullProductInfo(user_id: uint64, product_id: uint64): api/shop/get_full_product_info
@@ -105,10 +104,13 @@ Note that before login images are stored in the phome memory
     - photos: Image (many images)
     - price: float
     - liked: bool
+    - state: int : (enum: sold out, available, upcoming)
     - short_description: String
     - full_description: String
-    - size_list: [String]
-- searchProducts(user_id: uint64, search_pattern: String, category_id: uint64 - optional): api/shop/find_products
+    - size_list: 
+        type: String 
+        values: [float]
+- searchProducts(user_id: uint64, search_pattern: String, product_type_id: uint64 - optional): api/shop/find_products
   Retruns list of ProdcutPreviews
   Ret codes:
   - 200:
@@ -120,18 +122,19 @@ Note that before login images are stored in the phome memory
     - photos: [Image] (only one image)
     - price: float
     - liked: bool
+    - state: int : (enum: sold out, available, upcoming)
     - short_description: String
   - 400: bad category_id
   - 401: bad user_id
 
 ### Cart API
-- addToCart(user_id: uint64, product_id: uint64, amount: uint64 - optional): api/cart/add_to_cart
+- addToCart(user_id: uint64, product_id: uint64, size: (type: str, value: float), amount: uint64 - optional): api/cart/add_to_cart
   Adds to cart (1 by default).
   Ret codes:
   - 200 - OK
   - 400: bad product_id
   - 401: bad user_id
-- removeFromCart(user_id: uint64, product_id: uint64, amount: uint64 - optional): api/cart/remove_from_cart
+- removeFromCart(user_id: uint64, product_id: uint64, size: (type: str, value: float), amount: uint64 - optional): api/cart/remove_from_cart
   Adds to cart (1 by default).
   Ret codes:
   - 200 - OK
@@ -142,13 +145,14 @@ Note that before login images are stored in the phome memory
   Ret codes:
   - 200 - OK
     JSON:
-    [ProductPreviewWithSize, number: uint64]
+    [ProductPreviewWithSize (size field added), number: uint64]
   - 401 - bad user_id
 
 ### Common API
-- likeProduct(user_id: uint64, like: bool): api/cart/like_product
+- likeProduct(user_id: uint64, product_id: uint64, like: bool): api/cart/like_product
   Ret codes:
   - 200 - OK
+  - 400 - bad product_id
   - 401 - bad user_id
 
 ### Favorites API
@@ -161,12 +165,14 @@ Note that before login images are stored in the phome memory
     
 ### Home API
 - get_recomended_products(user_id: uint64): api/home/recomended_products
+  Random previews
   Ret codes:
   - 200
     JSON:
     [ProductPreview] (without_size)
   - 401 - bad user_id
 - get_promotions(user_id: uint64): api/home/get_promotions
+  Random list of links somewhere...
   Ret codes:
   - 200
     JSON:
