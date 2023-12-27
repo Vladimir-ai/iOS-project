@@ -8,14 +8,16 @@
 import Foundation
 import SwiftUI
 
-class ShopAPI: StubAPI {
-    static let recomendationList = [
+class ShopStubAPI: StubAPI, ShopProto {
+    static let sharedAPIInstance = ShopStubAPI()
+    
+    static private let recomendationList = [
         Category(id: 0, name: "Best Sellers", photo: Image("ImageBestSellers")),
         Category(id: 1, name: "Featured in Nike Air", photo: Image("ImageFeaturedInNikeAir")),
         Category(id: 2, name: "New Running Essentials", photo: Image("ImageNewRunningEssentials"))
     ]
     
-    static let commonRecomendations = [
+    static private let commonRecomendations = [
         "Men": [Category(id: 3, name: "New & Featured", photo: Image("menFeatured")),
                 Category(id: 4, name: "Clothing", photo: Image("menClothing")),
                 Category(id: 5, name: "Shoes", photo: Image("menShoes")),
@@ -33,16 +35,18 @@ class ShopAPI: StubAPI {
                  Category(id: 17, name: "Sale & Offers", photo: Image("kidsSale"))]
     ]
     
+    private override init() {}
+        
     func getAllCategoriesByUserID(userInfo: UserInfo) async -> [Category] {
         await super.waitBeforeReturn()
-        return ShopAPI.recomendationList
+        return ShopStubAPI.recomendationList
     }
     
     
     func getCommonCategoriesByGender(gender: String) async -> [Category] {
         await super.waitBeforeReturn()
-        assert(ShopAPI.commonRecomendations.keys.contains(gender))
-        return ShopAPI.commonRecomendations[gender].unsafelyUnwrapped
+        assert(ShopStubAPI.commonRecomendations.keys.contains(gender))
+        return ShopStubAPI.commonRecomendations[gender].unsafelyUnwrapped
     }
     
     // Gender should be included into ID

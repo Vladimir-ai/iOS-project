@@ -8,7 +8,11 @@
 import Foundation
 import SwiftUI
 
-class API: StubAPI {
+class CartStubAPI: StubAPI, CartProto {
+    static let sharedAPIInstance = CartStubAPI()
+    
+    private override init() {}
+    
     func addToCart(userID: UInt64, productID: UInt64, amount: UInt64!) async -> Void {
         // TODO: Add code
     }

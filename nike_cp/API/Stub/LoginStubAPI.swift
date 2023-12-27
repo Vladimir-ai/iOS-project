@@ -7,8 +7,11 @@
 
 import Foundation
 
-class LoginAPI: StubAPI {
-   
+class LoginStubAPI: StubAPI, LoginProto {
+    static let sharedAPIInstance = LoginStubAPI()
+    
+    private override init() {}
+    
     func login(mail: String, pass: String) async -> UserInfo! {
         await super.waitBeforeReturn()
         return UserInfo(usrID: userId, name: "Carl")

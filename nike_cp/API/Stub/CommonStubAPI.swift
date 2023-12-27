@@ -8,7 +8,11 @@
 import Foundation
 import SwiftUI
 
-class CommonAPI: StubAPI {
+class CommonStubAPI: StubAPI, CommonProto {
+    static let sharedAPIInstance = CommonStubAPI()
+    
+    private override init() {}
+    
     func likeProduct(userID: UInt64, like: Bool) async -> Void {
         // TODO: Add code
     }

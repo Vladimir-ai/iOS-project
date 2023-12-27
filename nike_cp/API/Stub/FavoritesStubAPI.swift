@@ -7,7 +7,11 @@
 
 import Foundation
 
-class FavoritesAPI: StubAPI {
+class FavoritesStubAPI: StubAPI, FavoritesProto {
+    static let sharedAPIInstance = FavoritesStubAPI()
+    
+    private override init() {}
+    
     func getFavoritesList(userID: UInt64) async -> [ProductPreview] {
         // TODO: Add code
         return []

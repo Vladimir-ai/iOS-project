@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ShopCommonRecomendationView: View {
     @Binding var gender: String
-    @Binding var shopAPI: ShopAPI
+    private let shopAPI = APIFactory.getShopAPI()
+    
     
     @State private var recommendationsList: [Category] = []
     

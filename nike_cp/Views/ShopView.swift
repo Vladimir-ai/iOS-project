@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ShopView : View {
     @State private var selectedGender = "Men"
-    @State private var shopAPI = ShopAPI()
     @Binding var userInfo: UserInfo
+    private let shopAPI = APIFactory.getShopAPI()
     
     static private let spacing = 20.0
     static private let gender = ["Men", "Women", "Kids"]
@@ -38,9 +38,9 @@ struct ShopView : View {
                         Spacer()
                     }
                     
-                    ShopRecomendGalleryView(userInfo: $userInfo, gender: $selectedGender, shopAPI: $shopAPI)
+                    ShopRecomendGalleryView(userInfo: $userInfo, gender: $selectedGender)
                 
-                    ShopCommonRecomendationView(gender: $selectedGender, shopAPI: $shopAPI)
+                    ShopCommonRecomendationView(gender: $selectedGender)
                 }
                 .padding([.leading, .trailing], nil)
             }
