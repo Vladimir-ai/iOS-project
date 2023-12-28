@@ -20,20 +20,20 @@ struct ShopSubCategoryListView: View {
         if subcategoryList.count > 0
         {
             List(subcategoryList) { subCategory in
-                NavigationLink {
-                    ShopSubCategoryGridView(subCategory: subCategory)
-                }
-            label:
-                {
-                    HStack{
-                        Text(subCategory.name).font(.title3)
-                    }.frame(height: 50)
-                }
+                    Text(subCategory.name)
+                        .font(.title3)
+                        .frame(height: 50)
+                        .background(
+                            NavigationLink {
+                                ShopSubCategoryGridView(subCategory: subCategory)
+                            }
+                            label: {
+                                   EmptyView()
+                            })
             }.refreshable {
                 assert(userInfo != nil)
                 subcategoryList = await shopAPI.getSubcategoriesByCategoryID(userID: userInfo.unsafelyUnwrapped.usrID, categoryID: category.id)
             }
-            .accentColor(.black)
             .listStyle(.plain)
             .navigationTitle(category.name)
             .toolbar {
