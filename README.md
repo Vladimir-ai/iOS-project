@@ -89,7 +89,7 @@ Note that before login images are stored in the phome memory
     - photos: Image (only one image)
     - price: float
     - liked: bool
-    - state: int : (enum: sold out, available, upcoming)
+    - state: String
     - short_description: String
   - 400 - Bad category_id
   - 401 - Bad user_id
@@ -104,7 +104,7 @@ Note that before login images are stored in the phome memory
     - photos: Image (many images)
     - price: float
     - liked: bool
-    - state: int : (enum: sold out, available, upcoming)
+    - state: String
     - short_description: String
     - full_description: String
     - size_list: 
@@ -122,7 +122,7 @@ Note that before login images are stored in the phome memory
     - photos: [Image] (only one image)
     - price: float
     - liked: bool
-    - state: int : (enum: sold out, available, upcoming)
+    - state: String
     - short_description: String
   - 400: bad category_id
   - 401: bad user_id
