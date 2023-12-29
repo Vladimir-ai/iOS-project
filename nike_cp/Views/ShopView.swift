@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ShopView : View {
-    @State private var selectedGender = "Men"
+    @State private var selectedGenderId: Gender = ShopView.gender[0]
     @Binding var userInfo: UserInfo
     private let shopAPI = APIFactory.getShopAPI()
     
     static private let spacing = 20.0
-    static private let gender = ["Men", "Women", "Kids"]
+    static private let gender = Gender.getAllPossibleGenders()
     
     var body: some View {
         NavigationStack {
@@ -21,8 +21,11 @@ struct ShopView : View {
                 Spacer()
                 VStack(spacing: 0)
                 {
-                    SegmentedView(segments: ShopView.gender, selected: $selectedGender)
+                    HStack {
+                        SegmentedView<Gender>(ShopView.gender,
+                                              $selectedGenderId)
                         .padding([.leading, .trailing], nil)
+                    }
                     
                     Divider()
                 }
@@ -38,9 +41,9 @@ struct ShopView : View {
                         Spacer()
                     }
                     
-                    ShopRecomendGalleryView(userInfo: $userInfo, gender: $selectedGender)
+                    ShopRecomendGalleryView(userInfo: $userInfo, gender: $selectedGenderId.name)
                 
-                    ShopCommonRecomendationView(gender: $selectedGender)
+                    ShopCommonRecomendationView(gender: $selectedGenderId.name)
                 }
                 .padding([.leading, .trailing], nil)
             }
@@ -56,6 +59,9 @@ struct ShopView : View {
             
     }
     
+    private func updateSelectedGender(newValue: some Identifiable) {
+        selectedGenderId = ShopView.gender.first {$0.id == newValue.id as! UUID} ?? ShopView.gender[0]
+    }
     
     func searchShop()
     {

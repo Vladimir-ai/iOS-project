@@ -17,14 +17,16 @@ class ProductPreview: Identifiable {
     var price: Float
     var photos: [Image] // Lets consider that there is only one image
     // Load others later: if user presses btn
+    var productState: String?
     
-    init(id: UInt64, name: String, price: Float, shortDescription: String, liked: Bool, photos: [Image]) {
+    init(id: UInt64, name: String, price: Float, shortDescription: String, liked: Bool, photos: [Image], productState: String?) {
         self.id = id
         self.name = name
         self.photos = photos
         self.price = price
         self.liked = liked
         self.shortDescription = shortDescription
+        self.productState = productState
     }
     
     init(other: ProductPreview) {
@@ -34,6 +36,7 @@ class ProductPreview: Identifiable {
         self.price = other.price
         self.shortDescription = other.shortDescription
         self.liked = other.liked
+        self.productState = other.productState
     }
 }
 
@@ -50,20 +53,19 @@ struct Size {
 class ProductPreviewWithSize: ProductPreview {
     var size: Size
     
-    
-    init(id: UInt64, name: String, price: Float, shortDescription: String, liked: Bool, photos: [Image], size: Size) {
+    init(id: UInt64, name: String, price: Float, shortDescription: String, liked: Bool, photos: [Image], productState: String?, size: Size) {
         self.size = size
-        super.init(id: id, name: name, price: price, shortDescription: shortDescription, liked: liked, photos: photos)
+        super.init(id: id, name: name, price: price, shortDescription: shortDescription, liked: liked, photos: photos, productState: productState)
     }
     
     init(other: ProductPreview, size: Size) {
         self.size = size
-        super.init(id: other.id, name: other.name, price: other.price, shortDescription: other.shortDescription, liked: other.liked, photos: other.photos)
+        super.init(other: other)
     }
     
     init(other: ProductPreviewWithSize) {
         self.size = other.size
-        super.init(id: other.id, name: other.name, price: other.price, shortDescription: other.shortDescription, liked: other.liked, photos: other.photos)
+        super.init(id: other.id, name: other.name, price: other.price, shortDescription: other.shortDescription, liked: other.liked, photos: other.photos, productState: other.productState)
     }
 }
 
@@ -77,9 +79,9 @@ class Product: ProductPreview {
         super.init(other: previewProduct)
     }
     
-    init(id: UInt64, name: String, price: Float, shortDescription: String, liked: Bool, photos: [Image], fullDescription: String, sizes: [Size]) {
+    init(id: UInt64, name: String, price: Float, shortDescription: String, liked: Bool, photos: [Image], fullDescription: String, productState: String?, sizes: [Size]) {
         self.fullDescription = fullDescription
         self.sizes = sizes
-        super.init(id: id, name: name, price: price, shortDescription: shortDescription, liked: liked, photos: photos)
+        super.init(id: id, name: name, price: price, shortDescription: shortDescription, liked: liked, photos: photos, productState: productState)
     }
 }

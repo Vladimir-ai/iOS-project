@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProductType: Identifiable {
+class ProductType: Identifiable, CustomStringConvertible {
     var id: UInt64
     var name: String
         
@@ -15,4 +15,9 @@ struct ProductType: Identifiable {
         self.id = id
         self.name = name
     }
+    
+    var description: String {
+        return self.name
+    }
 }
+

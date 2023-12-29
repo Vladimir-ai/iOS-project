@@ -22,12 +22,12 @@ class ShopStubAPI: StubAPI, ShopProto {
                 Category(id: 4, name: "Clothing", photo: Image("menClothing")),
                 Category(id: 5, name: "Shoes", photo: Image("menShoes")),
                 Category(id: 6, name: "Accescories and Equipment", photo: Image("menEquipment")),
-                Category(id: 7, name: "Sale & Offers", photo: Image("menSale"))],
+                Category(id: 7, name: "Sale & Offers", photo: Image("menSales"))],
         "Women": [Category(id: 8, name: "New & Featured", photo: Image("womenFeatured")),
                   Category(id: 9, name: "Clothing", photo: Image("womenClothing")),
                   Category(id: 10, name: "Shoes", photo: Image("womenShoes")),
                   Category(id: 11, name: "Accescories and Equipment", photo: Image("womenEquipment")),
-                  Category(id: 12, name: "Sale & Offers", photo: Image("womenSale"))],
+                  Category(id: 12, name: "Sale & Offers", photo: Image("womenSales"))],
         "Kids": [Category(id: 13, name: "New & Featured", photo: Image("kidsFeatured")),
                  Category(id: 14, name: "Clothing", photo: Image("kidsClothing")),
                  Category(id: 15, name: "Shoes", photo: Image("kidsShoes")),
@@ -62,19 +62,30 @@ class ShopStubAPI: StubAPI, ShopProto {
     
     // Gender should be included into ID
     func getProductTypesByCategoryID(userID: UInt64, subCategoryID: UInt64) async -> [ProductType] {
-        //TODO: Add code
-        return []
+        await super.waitBeforeReturn()
+        return [
+            ProductType(id: 0, name: "AAAA"),
+            ProductType(id: 1, name: "BBBBB"),
+            ProductType(id: 2, name: "CCCCC"),
+            ProductType(id: 3, name: "DDDDDD"),
+            ProductType(id: 4, name: "EEEEEEE"),
+            ProductType(id: 5, name: "FFFFFFFF")
+        ]
     }
     
     // Gender should be included into ID
-    func getProductPreviewsByProductTypeID(userID: UInt64, productTypeID: UInt64) async -> [ProductType] {
-        //TODO: Add code
-        return []
+    func getProductPreviewsByProductTypeID(userID: UInt64, productTypeID: UInt64) async -> [ProductPreview] {
+        return [
+            ProductPreview(id: 0, name: "AAA", price: 300.0, shortDescription: "Three hundred bucks", liked: false, photos: [Image("productPreview1")], productState: "Lorem Ipsum"),
+            ProductPreview(id: 1, name: "BBB", price: 400.0, shortDescription: "DDD product", liked: false, photos: [Image("productPreview2")], productState: nil),
+            ProductPreview(id: 2, name: "CCC", price: 499.0, shortDescription: "CCC product", liked: true, photos: [Image("productPreview3")], productState: nil),
+            ProductPreview(id: 3, name: "CCC", price: 499.0, shortDescription: "CCC product", liked: true, photos: [Image("productPreview3")], productState: "Works")
+        ]
     }
     
     func getFullProductInfo(userID: UInt64, productID: UInt64) async -> Product {
         // TODO: Add code
-        return Product(id: 0, name: "a", price: 0, shortDescription: "a", liked: false, photos: [Image("kidsSale")], fullDescription: "AAA", sizes: [Size(type: "EU", size: 10)])
+        return Product(id: 0, name: "a", price: 0, shortDescription: "a", liked: false, photos: [Image("kidsSale")], fullDescription: "AAA", productState: nil, sizes: [Size(type: "EU", size: 10)])
     }
 
     func searchProducts(userID: UInt64, searchPattern: String, categoryID: UInt64!) async -> [ProductPreview] {

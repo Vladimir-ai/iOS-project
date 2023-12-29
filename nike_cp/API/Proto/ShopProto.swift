@@ -20,7 +20,7 @@ protocol ShopProto {
     func getProductTypesByCategoryID(userID: UInt64, subCategoryID: UInt64) async -> [ProductType]
     
     // Gender should be included into ID
-    func getProductPreviewsByProductTypeID(userID: UInt64, productTypeID: UInt64) async -> [ProductType]
+    func getProductPreviewsByProductTypeID(userID: UInt64, productTypeID: UInt64) async -> [ProductPreview]
     
     func getFullProductInfo(userID: UInt64, productID: UInt64) async -> Product
 
