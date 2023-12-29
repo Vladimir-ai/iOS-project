@@ -8,7 +8,8 @@
 import Foundation
 
 protocol LoginProto {
-   
+    var loggedUser: UserInfo {get}
+    
     func login(mail: String, pass: String) async -> UserInfo!
     
     func logout() async -> Void

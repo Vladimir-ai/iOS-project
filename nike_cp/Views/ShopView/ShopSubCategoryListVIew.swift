@@ -11,7 +11,6 @@ struct ShopSubCategoryListView: View {
     @Environment(\.presentationMode) var presentationMode
     var category: Category
     
-    
     @State private var subcategoryList: [SubCategory] = []
     private let shopAPI = APIFactory.getShopAPI()
     private let userInfo = APIFactory.getLoginAPI().getCurrentLoggedInUser()
@@ -20,20 +19,21 @@ struct ShopSubCategoryListView: View {
         if subcategoryList.count > 0
         {
             List(subcategoryList) { subCategory in
-                NavigationLink {
-                    ShopSubCategoryGridView(subCategory: subCategory)
-                }
-            label:
-                {
-                    HStack{
-                        Text(subCategory.name).font(.title3)
-                    }.frame(height: 50)
-                }
+                    Text(subCategory.name)
+                        .font(.title3)
+                        .frame(height: 50)
+                        .background(
+                            NavigationLink {
+                                ShopSubCategoryView(subCategory: subCategory)
+                            }
+                            label: {
+                                   EmptyView()
+                            })
             }.refreshable {
                 assert(userInfo != nil)
                 subcategoryList = await shopAPI.getSubcategoriesByCategoryID(userID: userInfo.unsafelyUnwrapped.usrID, categoryID: category.id)
             }
-            .accentColor(.black)
+            .padding([.leading, .trailing], 0.0)
             .listStyle(.plain)
             .navigationTitle(category.name)
             .toolbar {
@@ -64,11 +64,18 @@ struct ShopSubCategoryListView: View {
         }
     }
     
-    func goBack() {
+    private func goBack() {
         presentationMode.wrappedValue.dismiss()
     }
     
     func searchShop() {
 //        TODO: Add code
+    }
+}
+
+struct ShopSubCategoryListView_Previews: PreviewProvider
+{
+    static var previews: some View {
+        ShopSubCategoryListView(category: Category(id: 0, name: "TMP", photo: Image("productPreview1")))
     }
 }

@@ -11,9 +11,12 @@ import SwiftUI
 class CommonStubAPI: StubAPI, CommonProto {
     static let sharedAPIInstance = CommonStubAPI()
     
+    private var likesCache: Dictionary<UInt64, Bool> = Dictionary<UInt64, Bool>()
+    
     private override init() {}
     
     func likeProduct(userID: UInt64, like: Bool) async -> Void {
-        // TODO: Add code
+        await super.waitBeforeReturn()
+        likesCache[userID] = like
     }
 }
