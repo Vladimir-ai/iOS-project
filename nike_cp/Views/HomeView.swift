@@ -11,8 +11,16 @@ struct HomeView : View {
     @Binding var userInfo: UserInfo
     
     var body: some View {
-        VStack {
-            Label("Home screen stub", systemImage: "bolt.fill").labelStyle(.titleOnly)
+        NavigationStack {
+            VStack (alignment: .leading, spacing: 5) {
+                HStack {
+                    Text("What's new")
+                    Spacer()
+                }
+                Text("The latest arrivals from\n Nike").font(.system(size: 32)).foregroundColor(.gray)
+                Spacer()
+            }.padding([.leading, .trailing], nil)
+            
         }
     }
 }
