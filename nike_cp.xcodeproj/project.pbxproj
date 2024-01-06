@@ -51,6 +51,9 @@
 		4AFC5F882B2321C30000B62C /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC5F872B2321C30000B62C /* FavoritesView.swift */; };
 		4AFC5F8B2B2322570000B62C /* BagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC5F8A2B2322570000B62C /* BagView.swift */; };
 		4AFC5F8D2B2322C00000B62C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC5F8C2B2322C00000B62C /* ProfileView.swift */; };
+		8041F5B12B49873500E101A9 /* ProductRecomendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041F5B02B49873500E101A9 /* ProductRecomendView.swift */; };
+		8041F5B32B49B8E400E101A9 /* HomeProductPromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041F5B22B49B8E400E101A9 /* HomeProductPromotionView.swift */; };
+		8046057D2B48978C0010137A /* HomeRecomendGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046057C2B48978C0010137A /* HomeRecomendGalleryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +122,9 @@
 		4AFC5F8A2B2322570000B62C /* BagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagView.swift; sourceTree = "<group>"; };
 		4AFC5F8C2B2322C00000B62C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		4AFC5F8E2B232E190000B62C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
+		8041F5B02B49873500E101A9 /* ProductRecomendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRecomendView.swift; sourceTree = "<group>"; };
+		8041F5B22B49B8E400E101A9 /* HomeProductPromotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductPromotionView.swift; sourceTree = "<group>"; };
+		8046057C2B48978C0010137A /* HomeRecomendGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecomendGalleryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +219,7 @@
 				4A8016422B2E1D40008262F7 /* SegmentedView.swift */,
 				4A8490F32B31F71600B23A8E /* ImgWithTextView.swift */,
 				4A881E472B3A0E600084FF46 /* ProductGridItemView.swift */,
+				8041F5B02B49873500E101A9 /* ProductRecomendView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -259,6 +266,7 @@
 		4AFC5F372B20FF220000B62C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8046057B2B488C8C0010137A /* HomeView */,
 				4A8016412B2E1D23008262F7 /* Common */,
 				4A899C722B28D5BF0042EE8A /* ShopView */,
 				4A7945892B12158A0055592B /* RootView.swift */,
@@ -294,6 +302,15 @@
 				4A89625B2B3B5198007E44AB /* Promotion.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8046057B2B488C8C0010137A /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				8046057C2B48978C0010137A /* HomeRecomendGalleryView.swift */,
+				8041F5B22B49B8E400E101A9 /* HomeProductPromotionView.swift */,
+			);
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,12 +451,15 @@
 				4A8C13072B3C9CCE00E2C102 /* LoginProto.swift in Sources */,
 				4AFC5F862B23216E0000B62C /* ShopView.swift in Sources */,
 				4AFC5F8D2B2322C00000B62C /* ProfileView.swift in Sources */,
+				8041F5B32B49B8E400E101A9 /* HomeProductPromotionView.swift in Sources */,
 				4A881E482B3A0E600084FF46 /* ProductGridItemView.swift in Sources */,
+				8046057D2B48978C0010137A /* HomeRecomendGalleryView.swift in Sources */,
 				4A8962522B3B467A007E44AB /* ProductType.swift in Sources */,
 				4A8C13092B3C9D5100E2C102 /* CartProto.swift in Sources */,
 				4A8C13022B3C932300E2C102 /* ShopSubCategoryListVIew.swift in Sources */,
 				4A7E8BEB2B38650F0054F5C7 /* LoginStubAPI.swift in Sources */,
 				4A8490F72B31F91300B23A8E /* ShopRecomendGalleryView.swift in Sources */,
+				8041F5B12B49873500E101A9 /* ProductRecomendView.swift in Sources */,
 				4A7E8BE72B385B9A0054F5C7 /* Product.swift in Sources */,
 				4A8962502B3B4648007E44AB /* SubCategory.swift in Sources */,
 				4A8703F42B36E8B700162E8A /* PhotoList.swift in Sources */,

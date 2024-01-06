@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Promotion {
+struct Promotion: Identifiable {
     var id: UInt64
     var img: Image
     var link: URL
