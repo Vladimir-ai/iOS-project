@@ -8,6 +8,11 @@
 import Foundation
 import SwiftUI
 
+struct IndentifiableImage: Identifiable{
+    let id = UUID()
+    let photo: Image
+}
+
 // Short description of product
 class ProductPreview: Identifiable {
     var id: UInt64
@@ -37,6 +42,14 @@ class ProductPreview: Identifiable {
         self.shortDescription = other.shortDescription
         self.liked = other.liked
         self.productState = other.productState
+    }
+    
+    func getIdentifiableImageList()-> [IndentifiableImage] {
+        var images = [IndentifiableImage]()
+        photos.forEach{ photo in
+            images.append(IndentifiableImage(photo: photo))
+        }
+        return images
     }
 }
 
