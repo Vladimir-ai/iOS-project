@@ -19,6 +19,7 @@ struct ProductView: View {
     @State private var currentUser: UserInfo!
     private let shopAPI = APIFactory.getShopAPI()
     private let loginAPI = APIFactory.getLoginAPI()
+    private let cartAPI = APIFactory.getCartAPI()
     private let frameWidth = 170.0
 
     var body: some View {
@@ -71,7 +72,7 @@ struct ProductView: View {
                             }
                             Spacer()
                             HStack {
-                                Text("Сведения о товаре")
+                                Text("About product")
                                     .foregroundColor(Color(uiColor: .systemGray))
                                     .font(.system(size: 20.0))
                                 Spacer()
@@ -81,22 +82,26 @@ struct ProductView: View {
                             
                         } label:{
                             HStack{
-                                Spacer()
-                                Text("Выберите размер")
-                                Label("Go Back", systemImage: "chevron.down")
-                                    .labelStyle(.iconOnly)
-                                Spacer()
+                                NavigationLink {
+                                    SelectSizeView()
+                                } label : {
+                                    Spacer()
+                                    Text("Select size")
+                                    Label("Go Back", systemImage: "chevron.down")
+                                        .labelStyle(.iconOnly)
+                                    Spacer()
+                                }
                             }.padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing:  24))
                         }
                             .background(Capsule().stroke(.gray, lineWidth: 2))
                             .font(.system(.title2, design: .rounded, weight: .bold))
                         
                         Button {
-                            
+                            //cartAPI.addToCart(userID: currentUser.usrID, productID: product?.id)
                         } label:{
                             HStack{
                                 Spacer()
-                                Text("Добавить в корзину")
+                                Text("Add to cart")
                                 Spacer()
                             }.padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing:  24))
                         }.foregroundColor(.white)
@@ -109,22 +114,24 @@ struct ProductView: View {
                             } label:{
                                 HStack{
                                     Spacer()
-                                    Text("Купить")
+                                    Text("Buy")
                                     Spacer()
                                 }.padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing:  24))
                             }.background(Capsule().stroke(.gray, lineWidth: 2))
                             .font(.system(.title2, design: .rounded, weight: .bold))
                             
-                            Button {
-                                
-                            } label:{
-                                HStack{
-                                    Spacer()
-                                    Label("", systemImage: "suit.heart").labelStyle(.iconOnly)
-                                    Spacer()
-                                }.padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing:  24))
-                            }.background(Capsule().stroke(.gray, lineWidth: 2))
-                            .font(.system(.title2, design: .rounded, weight: .bold))
+                            
+                                Button {
+                                    
+                                } label:{
+                                    HStack{
+                                        Spacer()
+                                        Label("", systemImage: "suit.heart").labelStyle(.iconOnly)
+                                        Spacer()
+                                    }.padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing:  24))
+                                }.background(Capsule().stroke(.gray, lineWidth: 2))
+                                    .font(.system(.title2, design: .rounded, weight: .bold))
+                
                         }
                         Spacer()
                     }.padding([.leading, .trailing], nil)
