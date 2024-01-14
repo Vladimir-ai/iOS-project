@@ -16,6 +16,8 @@
 		119346692B4C34A9001C2A08 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119346682B4C34A9001C2A08 /* OnboardingView.swift */; };
 		1193466B2B4C3835001C2A08 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193466A2B4C3835001C2A08 /* WelcomeView.swift */; };
 		1193466D2B4C3AB7001C2A08 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193466C2B4C3AB7001C2A08 /* StartView.swift */; };
+		11B2A14F2B54844A001D5C9D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B2A14E2B54844A001D5C9D /* SearchView.swift */; };
+		11B2A1512B548703001D5C9D /* SearchButtonVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B2A1502B548703001D5C9D /* SearchButtonVIew.swift */; };
 		4A3404A92B3F3E18004769A5 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3404A82B3F3E18004769A5 /* ProductView.swift */; };
 		4A3EF53E2B3A045000889EC9 /* ShopCommonRecomendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3EF53D2B3A045000889EC9 /* ShopCommonRecomendationView.swift */; };
 		4A7945882B12158A0055592B /* nike_cpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7945872B12158A0055592B /* nike_cpApp.swift */; };
@@ -98,6 +100,8 @@
 		119346682B4C34A9001C2A08 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		1193466A2B4C3835001C2A08 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		1193466C2B4C3AB7001C2A08 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		11B2A14E2B54844A001D5C9D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		11B2A1502B548703001D5C9D /* SearchButtonVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonVIew.swift; sourceTree = "<group>"; };
 		4A3404A82B3F3E18004769A5 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		4A3EF53D2B3A045000889EC9 /* ShopCommonRecomendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCommonRecomendationView.swift; sourceTree = "<group>"; };
 		4A7945842B12158A0055592B /* nike_cp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nike_cp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +206,14 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		11B2A14D2B548438001D5C9D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				11B2A14E2B54844A001D5C9D /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		4A79457B2B12158A0055592B = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +285,7 @@
 				8041F5B02B49873500E101A9 /* ProductRecomendView.swift */,
 				1108E2A82B54318900A98033 /* CheckItemRow.swift */,
 				803947B32B543F230053ED0C /* SelectSizeView.swift */,
+				11B2A1502B548703001D5C9D /* SearchButtonVIew.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -337,6 +350,7 @@
 		4AFC5F372B20FF220000B62C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				11B2A14D2B548438001D5C9D /* Search */,
 				1108E2B02B54623A00A98033 /* Login */,
 				119346672B4C347B001C2A08 /* Onboarding */,
 				8046057B2B488C8C0010137A /* HomeView */,
@@ -522,6 +536,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A8703FA2B37010A00162E8A /* StubAPI.swift in Sources */,
+				11B2A14F2B54844A001D5C9D /* SearchView.swift in Sources */,
+				11B2A1512B548703001D5C9D /* SearchButtonVIew.swift in Sources */,
 				1193466B2B4C3835001C2A08 /* WelcomeView.swift in Sources */,
 				4A89625C2B3B5198007E44AB /* Promotion.swift in Sources */,
 				4A8703F82B36ECC600162E8A /* ShopProductTypeGridView.swift in Sources */,
