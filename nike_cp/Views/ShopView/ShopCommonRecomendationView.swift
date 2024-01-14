@@ -13,9 +13,10 @@ struct ShopCommonRecomendationView: View {
     private let loginAPI = APIFactory.getLoginAPI()
     
     @State private var categoryList: [Category] = []
+    @State private var loaded = false
     
     var body: some View {
-        if categoryList.count > 0 {
+        if loaded {
             VStack {
                 ForEach(categoryList) { category in
                     NavigationLink {
@@ -29,13 +30,14 @@ struct ShopCommonRecomendationView: View {
                     }
                 }
             }.onChange(of: gender) { _ in
-                    categoryList = []
+                loaded = false
             }
         }
         else
         {
             ProgressView().task {
                 categoryList = await shopAPI.getCommonCategoriesByGender(gender: gender)
+                loaded = true
             }
         }
     }

@@ -28,7 +28,7 @@ struct HomeRecomendGalleryView : View {
                 else
                 {
                     ProgressView().task {
-                        await recomendedProductList = homeAPI.getRecomendedProducts( userID: userInfo.usrID)
+                        await recomendedProductList = homeAPI.getRecomendedProducts( userID: userInfo.id)
                     }
                 }
             }

@@ -1,30 +1,27 @@
 //
-//  ShopCategoryView.swift
+//  ShopRecomendationsView.swift
 //  nike_cp
 //
-//  Created by Adminisrator on 29.12.2023.
+//  Created by Adminisrator on 14.01.2024.
 //
 
-import Foundation
 import SwiftUI
 
-struct ShopSubCategoryView: View {
+struct ShopRecomendationsView: View {
     @Environment(\.presentationMode) var presentationMode
-    var subCategory: SubCategory
+    var category: Category
     
     // Stores productType list, set these interfaces here just to make binding without
     //  many crutches. The same applies for selectedProduct
     @State private var productTypeList: [ProductType] = []
-    @State private var currentUser: UserInfo!
     @State private var selectedProductType: ProductType?
-    @State private var loaded = false
     
     private let shopAPI = APIFactory.getShopAPI()
     private let loginAPI = APIFactory.getLoginAPI()
     
     var body: some View {
         VStack {
-            if (loaded && productTypeList.count > 0 && currentUser != nil) {
+            if (productTypeList.count > 0) {
                 ScrollView(.horizontal)
                 {
                     SegmentedView<ProductType>(productTypeList, $selectedProductType)
@@ -32,17 +29,9 @@ struct ShopSubCategoryView: View {
                 
                 ShopProductTypeGridView(productType: $selectedProductType)
             }
-            else if (loaded && productTypeList.count == 0)
-            {
-                Text("No such products")
-                Image("sad_kitty")
-            }
             else {
                 ProgressView().task {
-                    currentUser = loginAPI.getCurrentLoggedInUser()
-                    productTypeList = await shopAPI.getProductTypesBySubCategoryID(user: currentUser, subCategory: subCategory)
-                    
-                    loaded = true
+                    productTypeList = await shopAPI.getProductTypesByMustHaveCategoryID(category: category)
                     
                     if productTypeList.count > 0 {
                         selectedProductType = productTypeList[0]
@@ -50,7 +39,7 @@ struct ShopSubCategoryView: View {
                 }
             }
         }
-        .navigationTitle(subCategory.name)
+        .navigationTitle(category.name)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading)
             {

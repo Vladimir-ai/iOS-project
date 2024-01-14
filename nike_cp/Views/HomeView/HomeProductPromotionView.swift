@@ -33,7 +33,7 @@ struct HomeProductPromotionView: View {
         {
             ProgressView().task {
                 currentUser	 = loginAPI.getCurrentLoggedInUser()
-                promotionList = await homeAPI.getPromotions(userID: currentUser.usrID)
+                promotionList = await homeAPI.getPromotions(userID: currentUser.id)
             }
         }
     }

@@ -10,7 +10,7 @@ import Foundation
 class APIFactory {
     
     static func getShopAPI() -> ShopProto {
-        return ShopStubAPI.sharedAPIInstance
+        return ShopJsonBasedAPI.sharedAPIInstance
     }
     
     static func getLoginAPI() -> LoginProto {

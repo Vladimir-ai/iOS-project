@@ -9,7 +9,7 @@ import Foundation
 
 class LoginStubAPI: StubAPI, LoginProto {
     static let sharedAPIInstance = LoginStubAPI()
-    private var _loggedUser = UserInfo(usrID: 0, name: "Carl")
+    private var _loggedUser = UserInfo(usrID: 1, name: "Carl")
     
     var loggedUser: UserInfo {
         get {

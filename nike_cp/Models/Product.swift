@@ -14,7 +14,7 @@ struct IndentifiableImage: Identifiable{
 }
 
 // Short description of product
-class ProductPreview: Identifiable {
+class ProductPreview: Identifiable, Codable {
     var id: UInt64
     var name: String
     var shortDescription: String
@@ -51,15 +51,62 @@ class ProductPreview: Identifiable {
         }
         return images
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case product_id
+        case name
+        case shortDescription
+        case liked
+        case price
+        case state
+        case photos
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UInt64.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        shortDescription = try container.decode(String.self, forKey: .shortDescription)
+        liked = try container.decode(Bool.self, forKey: .liked)
+        price = try container.decode(Float.self, forKey: .price)
+        productState = try container.decode(String?.self, forKey: .state)
+        
+        
+        var imageArray: [Image] = []
+        
+        for base64str in try container.decode([String].self, forKey: .photos)
+        {
+            imageArray.append(try Utils.base64StringToImage(base64Str: base64str))
+        }
+        
+        photos = imageArray
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .product_id)
+    }
 }
 
-struct Size {
+struct Size: Decodable {
     var type: String
     var size: Float
     
     init(type: String, size: Float) {
         self.type = type
         self.size = size
+    }
+    
+    enum CodingKeys: CodingKey {
+        case type
+        case size
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.type = try container.decode(String.self, forKey: .type)
+        self.size = try container.decode(Float.self, forKey: .size)
     }
 }
 
@@ -80,6 +127,24 @@ class ProductPreviewWithSize: ProductPreview {
         self.size = other.size
         super.init(id: other.id, name: other.name, price: other.price, shortDescription: other.shortDescription, liked: other.liked, photos: other.photos, productState: other.productState)
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case product_id
+        case name
+        case shortDescription
+        case liked
+        case price
+        case productState
+        case photos
+        case size
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        size = try container.decode(Size.self, forKey: .size)
+        try super.init(from: decoder)
+    }
 }
 
 class Product: ProductPreview {
@@ -96,5 +161,25 @@ class Product: ProductPreview {
         self.fullDescription = fullDescription
         self.sizes = sizes
         super.init(id: id, name: name, price: price, shortDescription: shortDescription, liked: liked, photos: photos, productState: productState)
+    }
+   
+    enum CodingKeys: String, CodingKey {
+        case id
+        case product_id
+        case name
+        case shortDescription
+        case fullDescription
+        case liked
+        case price
+        case state
+        case photos
+        case sizes
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        sizes = try container.decode([Size].self, forKey: .sizes)
+        fullDescription = try container.decode(String.self, forKey: .fullDescription)
+        try super.init(from: decoder)
     }
 }

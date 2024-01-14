@@ -37,10 +37,18 @@ class ShopStubAPI: StubAPI, ShopProto {
     
     private override init() {}
         
-    func getAllCategoriesByUserID(userInfo: UserInfo) async -> [Category] {
+    func getMustHaveCategoriesByUserID(userInfo: UserInfo, gender: String) async -> [Category] {
         await super.waitBeforeReturn()
         return ShopStubAPI.recomendationList
     }
+    
+    func getProductTypesByMustHaveCategoryID(category: Category) async -> [ProductType] {
+        await super.waitBeforeReturn()
+        return [ProductType(id: 0, name: "AAAA"),
+                ProductType(id: 1, name: "BBBBB"),
+                ProductType(id: 2, name: "CCCCC")]
+    }
+
     
     
     func getCommonCategoriesByGender(gender: String) async -> [Category] {
@@ -50,7 +58,7 @@ class ShopStubAPI: StubAPI, ShopProto {
     }
     
     // Gender should be included into ID
-    func getSubcategoriesByCategoryID(userID: UInt64, categoryID: UInt64) async -> [SubCategory] {
+    func getSubcategoriesByCategoryID(user: UserInfo, category: Category) async -> [SubCategory] {
         await super.waitBeforeReturn()
         // Ignore -- its just stub
         return [SubCategory(id: 0, name: "All shoes"),
@@ -61,7 +69,7 @@ class ShopStubAPI: StubAPI, ShopProto {
     }
     
     // Gender should be included into ID
-    func getProductTypesByCategoryID(userID: UInt64, subCategoryID: UInt64) async -> [ProductType] {
+    func getProductTypesBySubCategoryID(user: UserInfo, subCategory: SubCategory) async -> [ProductType] {
         await super.waitBeforeReturn()
         return [
             ProductType(id: 0, name: "AAAA"),
@@ -74,7 +82,7 @@ class ShopStubAPI: StubAPI, ShopProto {
     }
     
     // Gender should be included into ID
-    func getProductPreviewsByProductTypeID(userID: UInt64, productTypeID: UInt64) async -> [ProductPreview] {
+    func getProductPreviewsByProductType(user: UserInfo, productType: ProductType) async -> [ProductPreview] {
         return [
             ProductPreview(id: 0, name: "AAA", price: 300.0, shortDescription: "Three hundred bucks", liked: false, photos: [Image("productPreview1")], productState: "Lorem Ipsum"),
             ProductPreview(id: 1, name: "BBB", price: 400.0, shortDescription: "DDD product", liked: false, photos: [Image("productPreview2")], productState: nil),

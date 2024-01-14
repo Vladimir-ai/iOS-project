@@ -111,7 +111,7 @@ struct ProductGridItemView: View {
         
         Task {
             productPreview.liked = !productPreview.liked
-            await favoritesAPI.likeProduct(userID: loggedUser.usrID,  like: productPreview.liked)
+            await favoritesAPI.likeProduct(userID: loggedUser.id,  like: productPreview.liked)
             likeReqInProgress = false
         }
     }
