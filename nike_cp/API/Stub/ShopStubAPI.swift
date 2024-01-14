@@ -93,7 +93,7 @@ class ShopStubAPI: StubAPI, ShopProto {
     
     func getFullProductInfo(userID: UInt64, productID: UInt64) async -> Product {
         // TODO: Add code
-        return Product(id: 0, name: "a", price: 0, shortDescription: "a", liked: false, photos: [Image("kidsSale")], fullDescription: "AAA", productState: nil, sizes: [Size(type: "EU", size: 10)])
+        return Product(id: 0, name: "Boots", price: 0, shortDescription: "a", liked: false, photos: [Image("kidsSale")], fullDescription: "AAA  djdkgk dgkjsflfsh sdgg fhjy ertry rytuturydvbf cgfghthth dgfhfjtgj fhtgjt", productState: nil, sizes: [Size(type: "EU", size: 10), Size(type: "EU", size: 11), Size(type: "EU", size: 12), Size(type: "EU", size: 14)])
     }
 
     func searchProducts(userID: UInt64, searchPattern: String, categoryID: UInt64!) async -> [ProductPreview] {

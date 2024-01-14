@@ -17,6 +17,7 @@ struct ProductView: View {
     @State private var currPhoto: IndentifiableImage?
     @State private var index = 0
     @State private var currentUser: UserInfo!
+    @State var size: Float = 0
     private let shopAPI = APIFactory.getShopAPI()
     private let loginAPI = APIFactory.getLoginAPI()
     private let cartAPI = APIFactory.getCartAPI()
@@ -83,7 +84,7 @@ struct ProductView: View {
                         } label:{
                             HStack{
                                 NavigationLink {
-                                    SelectSizeView()
+                                    SelectSizeView(sizes: productUnwrap.sizes, parent: self).toolbar(.hidden)
                                 } label : {
                                     Spacer()
                                     Text("Select size")
