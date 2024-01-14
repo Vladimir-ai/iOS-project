@@ -50,10 +50,7 @@ struct ShopRecomendationsView: View {
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: searchShop) {
-                    Label("Search", systemImage: "magnifyingglass")
-                        .labelStyle(.iconOnly)
-                }
+                    SearchButtonVIew()
             }
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -62,9 +59,5 @@ struct ShopRecomendationsView: View {
     
     func goBack() {
         presentationMode.wrappedValue.dismiss()
-    }
-    
-    func searchShop() {
-        
     }
 }

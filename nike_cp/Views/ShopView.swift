@@ -49,10 +49,7 @@ struct ShopView : View {
             }
             .navigationTitle(String(localized: "Shop"))
             .toolbar {
-                Button(action: searchShop) {
-                    Label("Search", systemImage: "magnifyingglass")
-                        .labelStyle(.iconOnly)
-                }
+                SearchButtonVIew()
             }
         }.toolbarBackground(.white, for: .tabBar)
          .toolbarBackground(.visible, for: .tabBar)
@@ -61,11 +58,6 @@ struct ShopView : View {
     
     private func updateSelectedGender(newValue: some Identifiable) {
         selectedGenderId = ShopView.gender.first {$0.id == newValue.id as! UUID} ?? ShopView.gender[0]
-    }
-    
-    func searchShop()
-    {
-        //TODO: Add search
     }
 }
 

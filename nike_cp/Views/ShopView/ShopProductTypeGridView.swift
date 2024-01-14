@@ -19,31 +19,35 @@ struct ShopProductTypeGridView: View {
     private let loginAPI = APIFactory.getLoginAPI()
     
     var body: some View {
-        ScrollView(.vertical) {
-            if (loaded) {
-                LazyVGrid(columns: gridLayout, spacing: 5) {
-                    ForEach (productPreviewsList) { productPreview in
-                        ProductGridItemView(productPreview: productPreview)
+        VStack {
+          
+            ScrollView(.vertical) {
+                if (loaded) {
+                    LazyVGrid(columns: gridLayout, spacing: 5) {
+                        ForEach (productPreviewsList) { productPreview in
+                            ProductGridItemView(productPreview: productPreview)
+                        }
+                    }
+                    .padding([.leading, .trailing], nil)
+                    .refreshable {
+                        
                     }
                 }
-                .padding([.leading, .trailing], nil)
-                .refreshable {
-                    
+                else
+                {
+                    ProgressView().task {
+                        assert(productType != nil)
+                        
+                        productPreviewsList = await shopAPI.getProductPreviewsByProductType(user: loginAPI.getCurrentLoggedInUser(), productType: productType!)
+                        
+                        loaded = true
+                    }
                 }
+            }.onChange(of: productType) { _ in
+                loaded = false
             }
-            else
-            {
-                ProgressView().task {
-                    assert(productType != nil)
-                    
-                    productPreviewsList = await shopAPI.getProductPreviewsByProductType(user: loginAPI.getCurrentLoggedInUser(), productType: productType!)
-                    
-                    loaded = true
-                }
-            }
-        }.onChange(of: productType) { _ in
-            loaded = false
         }
+        
     }
 }
 
