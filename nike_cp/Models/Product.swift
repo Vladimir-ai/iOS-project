@@ -89,7 +89,8 @@ class ProductPreview: Identifiable, Codable {
     }
 }
 
-struct Size: Decodable {
+struct Size : Identifiable, Decodable{
+    let id = UUID()
     var type: String
     var size: Float
     
