@@ -9,18 +9,20 @@ import Foundation
 import SwiftUI
 
 protocol ShopProto {
-    func getAllCategoriesByUserID(userInfo: UserInfo) async -> [Category]
+    func getMustHaveCategoriesByUserID(userInfo: UserInfo, gender: String) async -> [Category]
     
     func getCommonCategoriesByGender(gender: String) async -> [Category]
+   
+    func getProductTypesByMustHaveCategoryID(category: Category) async -> [ProductType]
     
     // Gender should be included into ID
-    func getSubcategoriesByCategoryID(userID: UInt64, categoryID: UInt64) async -> [SubCategory]
+    func getSubcategoriesByCategoryID(user: UserInfo, category: Category) async -> [SubCategory]
     
     // Gender should be included into ID
-    func getProductTypesByCategoryID(userID: UInt64, subCategoryID: UInt64) async -> [ProductType]
+    func getProductTypesBySubCategoryID(user: UserInfo, subCategory: SubCategory) async -> [ProductType]
     
     // Gender should be included into ID
-    func getProductPreviewsByProductTypeID(userID: UInt64, productTypeID: UInt64) async -> [ProductPreview]
+    func getProductPreviewsByProductType(user: UserInfo, productType: ProductType) async -> [ProductPreview]
     
     func getFullProductInfo(userID: UInt64, productID: UInt64) async -> Product
 

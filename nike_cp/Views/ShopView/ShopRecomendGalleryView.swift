@@ -11,6 +11,7 @@ struct ShopRecomendGalleryView : View {
     @Binding var userInfo: UserInfo
     @Binding var gender: String
     @State private var recomendedCategoriesList: [Category] = []
+    @State private var loaded = false
     
     private let shopAPI = APIFactory.getShopAPI()
     
@@ -18,11 +19,11 @@ struct ShopRecomendGalleryView : View {
         ScrollView(.horizontal, showsIndicators: false)
         {
             HStack {
-                if (recomendedCategoriesList.count > 0)
+                if (loaded)
                 {
                     ForEach(recomendedCategoriesList) { category in
                         NavigationLink {
-                            ShopSubCategoryListView(category: category)
+                            ShopRecomendationsView(category: category)
                         }
                     label:
                         {
@@ -33,12 +34,13 @@ struct ShopRecomendGalleryView : View {
                 else
                 {
                     ProgressView().task {
-                        await recomendedCategoriesList = shopAPI.getAllCategoriesByUserID(userInfo: userInfo)
+                        await recomendedCategoriesList = shopAPI.getMustHaveCategoriesByUserID(userInfo: userInfo, gender: gender)
+                        loaded = true
                     }
                 }
             }
             .onChange(of: gender){ _ in
-                recomendedCategoriesList = []
+                loaded = false
             }
         }
     }

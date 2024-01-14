@@ -11,7 +11,7 @@ struct ShopProductTypeGridView: View {
     @Binding var productType: ProductType?
     
     @State private var productPreviewsList: [ProductPreview] = []
-    
+    @State private var loaded = false
     private let gridLayout = [
         GridItem(.adaptive(minimum: 170))
     ]
@@ -20,7 +20,7 @@ struct ShopProductTypeGridView: View {
     
     var body: some View {
         ScrollView(.vertical) {
-            if (productPreviewsList.count > 0) {
+            if (loaded) {
                 LazyVGrid(columns: gridLayout, spacing: 5) {
                     ForEach (productPreviewsList) { productPreview in
                         ProductGridItemView(productPreview: productPreview)
@@ -36,9 +36,13 @@ struct ShopProductTypeGridView: View {
                 ProgressView().task {
                     assert(productType != nil)
                     
-                    productPreviewsList = await shopAPI.getProductPreviewsByProductTypeID(userID: loginAPI.getCurrentLoggedInUser().usrID, productTypeID: productType!.id)
+                    productPreviewsList = await shopAPI.getProductPreviewsByProductType(user: loginAPI.getCurrentLoggedInUser(), productType: productType!)
+                    
+                    loaded = true
                 }
             }
+        }.onChange(of: productType) { _ in
+            loaded = false
         }
     }
 }

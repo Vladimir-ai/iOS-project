@@ -134,7 +134,7 @@ struct ProductView: View {
             {
                 ProgressView().task {
                     currentUser = loginAPI.getCurrentLoggedInUser()
-                    product = await shopAPI.getFullProductInfo(userID: currentUser.usrID, productID: productPreview.id)
+                    product = await shopAPI.getFullProductInfo(userID: currentUser.id, productID: productPreview.id)
                     let photos = productPreview.getIdentifiableImageList()
                     currPhoto = photos[0]
                 }
