@@ -22,7 +22,7 @@ class APIFactory {
     }
     
     static func getCommonAPI() -> CommonProto {
-        return CommonStubAPI.sharedAPIInstance
+        return CommonJsonBasedAPI.sharedAPIInstance
     }
     
     static func getFavoritesAPI() -> FavoritesProto {

@@ -10,5 +10,6 @@ import Foundation
 struct JsonApiConfig {
     static func getBaseUrl() -> String {
         return "https://nikki-back-kathiir.amvera.io/"
+//            return "http://10.0.2.2:5005/"
     }
 }

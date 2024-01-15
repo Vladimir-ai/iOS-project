@@ -15,7 +15,7 @@ class CommonStubAPI: StubAPI, CommonProto {
     
     private override init() {}
     
-    func likeProduct(userID: UInt64, like: Bool) async -> Void {
+    func likeProduct(userID: UInt64, productID: UInt64, like: Bool) async -> Void {
         await super.waitBeforeReturn()
         likesCache[userID] = like
     }
