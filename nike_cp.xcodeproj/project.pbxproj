@@ -61,6 +61,7 @@
 		4A998E0A2B541E9800B7E259 /* ShopJsonBasedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A998E092B541E9800B7E259 /* ShopJsonBasedAPI.swift */; };
 		4A998E0C2B541ECA00B7E259 /* JsonApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A998E0B2B541ECA00B7E259 /* JsonApiConfig.swift */; };
 		4A9AE7922B54726B0055FDFA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AE7912B54726B0055FDFA /* Utils.swift */; };
+		4AC11C6A2B5562BF008B8167 /* CommonJsonBasedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC11C692B5562BF008B8167 /* CommonJsonBasedAPI.swift */; };
 		4AFA0EB52B3EC341000F2F40 /* ShopSubCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFA0EB42B3EC341000F2F40 /* ShopSubCategoryView.swift */; };
 		4AFC5F842B2320940000B62C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC5F832B2320940000B62C /* HomeView.swift */; };
 		4AFC5F862B23216E0000B62C /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC5F852B23216E0000B62C /* ShopView.swift */; };
@@ -148,6 +149,7 @@
 		4A998E092B541E9800B7E259 /* ShopJsonBasedAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopJsonBasedAPI.swift; sourceTree = "<group>"; };
 		4A998E0B2B541ECA00B7E259 /* JsonApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonApiConfig.swift; sourceTree = "<group>"; };
 		4A9AE7912B54726B0055FDFA /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		4AC11C692B5562BF008B8167 /* CommonJsonBasedAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonJsonBasedAPI.swift; sourceTree = "<group>"; };
 		4AFA0EB42B3EC341000F2F40 /* ShopSubCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopSubCategoryView.swift; sourceTree = "<group>"; };
 		4AFC5F832B2320940000B62C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4AFC5F852B23216E0000B62C /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 			children = (
 				4A998E092B541E9800B7E259 /* ShopJsonBasedAPI.swift */,
 				4A998E0B2B541ECA00B7E259 /* JsonApiConfig.swift */,
+				4AC11C692B5562BF008B8167 /* CommonJsonBasedAPI.swift */,
 			);
 			path = JsonBased;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				4A7945882B12158A0055592B /* nike_cpApp.swift in Sources */,
 				1108E2B22B54627700A98033 /* LoginView.swift in Sources */,
 				4AFC5F8B2B2322570000B62C /* BagView.swift in Sources */,
+				4AC11C6A2B5562BF008B8167 /* CommonJsonBasedAPI.swift in Sources */,
 				4A83B3AB2B30D9E3003DDA4B /* ShopStubAPI.swift in Sources */,
 				1108E2AB2B54321F00A98033 /* CheckListItem.swift in Sources */,
 				4A8962542B3B4F26007E44AB /* CartStubAPI.swift in Sources */,

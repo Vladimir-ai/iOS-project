@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CommonProto {
-    func likeProduct(userID: UInt64, like: Bool) async -> Void
+    func likeProduct(userID: UInt64, productID: UInt64, like: Bool) async -> Void
 }
