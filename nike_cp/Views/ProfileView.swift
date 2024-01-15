@@ -11,10 +11,10 @@ struct ProfileView : View {
     @Binding var userInfo: UserInfo
     
     var body: some View {
-        VStack {
-            Label("Profile view stub", systemImage: "bolt.fill").labelStyle(.titleOnly)
-        }.toolbarBackground(.white, for: .tabBar)
-         .toolbarBackground(.visible, for: .tabBar)
-            
+        VStack(alignment: .leading) {
+            Image("Profile").resizable().cornerRadius(5)
+            Spacer(minLength: 100)
+            Text("Welcome to the Nike App").font(.title).frame(width: 300, alignment: .leading).padding(20)
+        }
     }
 }
