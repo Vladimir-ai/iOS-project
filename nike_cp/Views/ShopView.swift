@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ShopView : View {
+    @State private var selectedGenderId: Gender = ShopView.gender[0]
     @Binding var userInfo: UserInfo
+    private let shopAPI = APIFactory.getShopAPI()
     
     static private let spacing = 20.0
-    static private let gender = [String(localized: "Men"), String(localized: "Women"), String(localized: "Kids")]
+    static private let gender = Gender.getAllPossibleGenders()
     
     var body: some View {
         NavigationStack {
@@ -19,8 +21,11 @@ struct ShopView : View {
                 Spacer()
                 VStack(spacing: 0)
                 {
-                    SegmentedView(segments: ShopView.gender, selected: String(localized: "Men"))
+                    HStack {
+                        SegmentedView<Gender>(ShopView.gender,
+                                              $selectedGenderId)
                         .padding([.leading, .trailing], nil)
+                    }
                     
                     Divider()
                 }
@@ -36,26 +41,23 @@ struct ShopView : View {
                         Spacer()
                     }
                     
-                    ShopRecomendGalleryView(userInfo: $userInfo)
-                    
+                    ShopRecomendGalleryView(userInfo: $userInfo, gender: $selectedGenderId.name)
+                
+                    ShopCommonRecomendationView(gender: $selectedGenderId.name)
                 }
                 .padding([.leading, .trailing], nil)
             }
             .navigationTitle(String(localized: "Shop"))
             .toolbar {
-                Button(action: searchShop) {
-                    Label("Search", systemImage: "magnifyingglass")
-                        .labelStyle(.iconOnly)
-                }
+                SearchButtonVIew()
             }
-        }
+        }.toolbarBackground(.white, for: .tabBar)
+         .toolbarBackground(.visible, for: .tabBar)
+            
     }
     
-    
-    
-    func searchShop()
-    {
-        //TODO: Add search
+    private func updateSelectedGender(newValue: some Identifiable) {
+        selectedGenderId = ShopView.gender.first {$0.id == newValue.id as! UUID} ?? ShopView.gender[0]
     }
 }
 

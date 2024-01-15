@@ -7,17 +7,28 @@
 
 import Foundation
 
-struct UserInfo {
-    var usrID: UInt64
+struct UserInfo: Codable {
+    var id: UInt64
     var name: String
-    private static let apiCall = LoginAPI()
+    
+    enum CodingKeys: String, CodingKey {
+        case user_id
+        case user_name
+    }
     
     init(usrID: UInt64, name: String) {
-        self.usrID = usrID
+        self.id = usrID
         self.name = name
     }
     
-    static func login(email: String, passwd: String) async -> UserInfo! {
-        return await UserInfo.apiCall.tryLogin(mail: email, pass: passwd)
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UInt64.self, forKey: .user_id)
+        name = try container.decode(String.self, forKey: .user_name)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .user_id)
     }
 }

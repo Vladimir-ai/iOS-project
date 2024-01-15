@@ -9,30 +9,38 @@ import SwiftUI
 
 struct ShopRecomendGalleryView : View {
     @Binding var userInfo: UserInfo
-    @State private var recomendations: [Recomendation] = []
+    @Binding var gender: String
+    @State private var recomendedCategoriesList: [Category] = []
+    @State private var loaded = false
+    
+    private let shopAPI = APIFactory.getShopAPI()
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false)
         {
             HStack {
-                if (recomendations.count > 0)
+                if (loaded)
                 {
-                    ForEach(recomendations) { recomendation in
+                    ForEach(recomendedCategoriesList) { category in
                         NavigationLink {
-                            ShopRecomendationGridView(recomendation: recomendation)
+                            ShopRecomendationsView(category: category)
                         }
-                        label:
+                    label:
                         {
-                            ImgWithTextView(img: recomendation.photo, imgText: recomendation.name)
+                            ImgWithTextView(img: category.photo, imgText: category.name)
                         }
                     }
                 }
                 else
                 {
-                    Text("Loading...").task {
-                        await recomendations = Recomendation.getAllRecomendationByUserInfo(user: userInfo)
+                    ProgressView().task {
+                        await recomendedCategoriesList = shopAPI.getMustHaveCategoriesByUserID(userInfo: userInfo, gender: gender)
+                        loaded = true
                     }
                 }
+            }
+            .onChange(of: gender){ _ in
+                loaded = false
             }
         }
     }
@@ -40,6 +48,6 @@ struct ShopRecomendGalleryView : View {
 
 struct ShopRecomendGalleryView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopRecomendGalleryView(userInfo: .constant(UserInfo(usrID: 0, name: "Carl")))
+        ShopRecomendGalleryView(userInfo: .constant(UserInfo(usrID: 0, name: "Carl")), gender: .constant("Men"))
     }
 }

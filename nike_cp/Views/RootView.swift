@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
-    @State var userInfo = UserInfo(usrID: 0, name: "Carl")
+    @State var userInfo = APIFactory.getLoginAPI().loggedUser
     
     var body: some View {
         // Please note that every icon will be filled, not outlined as shown in the Figma.

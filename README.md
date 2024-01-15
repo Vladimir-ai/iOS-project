@@ -10,7 +10,7 @@ As it says that SwiftUI is usually better - use this framework.
 ### Views pattern
 
 There are many recommendations (like [this](https://developer.apple.com/forums/thread/699003) to use MV (Model-View) template, so the following structure is used.
-To call API, use static member of model classes using UserInfo struct if needed.
+To call API, use appropriate object for this. (mb these classes will be merged later and these classes will be converted to protocols, but not now =))
 
 
 ## Directory structure
@@ -21,6 +21,168 @@ To call API, use static member of model classes using UserInfo struct if needed.
   It's better to add some constant into implementation to sleep in the separate thread.
 - `nike_cpAPP`: just main
 
+## API
+
+### Login API
+Note that before login images are stored in the phome memory
+- login(email: String, passwd: String): api/login/login
+  Lets assume that there is user in db.
+  User won't use this app without login
+  Ret codes:
+  - 200
+    JSON:
+    - Logged_in: bool - required
+      user_name: String - optional, if `logged_in == true`
+      user_id: uint64 - optional, if `logged_in == true`
+- exit(): api/login/exit
+  Ret codes:
+  - 200 - OK
+
+
+### Shop API
+- getAllMustHaveAndMoreCategoriesByUserID(user_id: uint64): api/shop/get_must_haves_categories
+  Returns dict with genders, and category images for them
+  Category should be stored on back-end
+  Ret codes:
+  - 200
+    JSON:
+    - "(String): [Category]
+        Category entity: 
+        - Id: uint64
+        - Name: Str
+        - Image: Base64?
+  - 401 - bad user_id
+    Empty.
+- getCommonCategoriesByGender(gender: string): api/shop/get_common_categories
+  Returns dict with genders and images for them.
+  Only three genders are possible: `men`, `women`, `kids`
+  Ret codes are the same as for `getAllCategoriesByUserID`, but invalid gender triggers 400 error code.
+- getSubcategoriesByCategoryId(category_id: uint64): api/shop/get_subcategories_list
+  Returns list os subcategories
+  Ret codes:
+  - 200
+    JSON:
+    [Subcategory]
+    Subcategory:
+    - id: uint64
+    - name: String
+  - 400 - invalid category_id
+- getProductTypesBySubcategoryId(subcategory_id): api/shop/get_product_types_by_subcategories
+  Returns list of product types
+  Ret codes:
+  - 200
+    JSON
+    [ProductType]
+    ProductType:
+    - id: uint64
+    - name: String
+  - 400 - invalid subcategory_id
+- getProductsPreviewsByProductTypeId(user_id: uint64, product_type_id: uint64): api/shop/get_preview_list_by_product_type
+  Returns list of product previews.
+  Ret codes:
+  - 200
+    JSON:
+    [ProductPreview]
+    ProductPreview: 
+    - id: uint64
+    - name: String
+    - photos: Image (only one image)
+    - price: float
+    - liked: bool
+    - state: String
+    - short_description: String
+  - 400 - Bad category_id
+  - 401 - Bad user_id
+- getFullProductInfo(user_id: uint64, product_id: uint64): api/shop/get_full_product_info
+  Returns exactly one Product object
+  Ret codes:
+  - 200
+    JSON:
+    Product:
+    - id: uint64
+    - name: String
+    - photos: Image (many images)
+    - price: float
+    - liked: bool
+    - state: String
+    - short_description: String
+    - full_description: String
+    - size_list: 
+        type: String 
+        values: [float]
+- searchProducts(user_id: uint64, search_pattern: String, product_type_id: uint64 - optional): api/shop/find_products
+  Retruns list of ProdcutPreviews
+  Ret codes:
+  - 200:
+    JSON:
+    [ProductPreview]
+    ProductPreview: 
+    - id: uint64
+    - name: String
+    - photos: [Image] (only one image)
+    - price: float
+    - liked: bool
+    - state: String
+    - short_description: String
+  - 400: bad category_id
+  - 401: bad user_id
+
+### Cart API
+- addToCart(user_id: uint64, product_id: uint64, size: (type: str, value: float), amount: uint64 - optional): api/cart/add_to_cart
+  Adds to cart (1 by default).
+  Ret codes:
+  - 200 - OK
+  - 400: bad product_id
+  - 401: bad user_id
+- removeFromCart(user_id: uint64, product_id: uint64, size: (type: str, value: float), amount: uint64 - optional): api/cart/remove_from_cart
+  Adds to cart (1 by default).
+  Ret codes:
+  - 200 - OK
+  - 400: bad product_id
+  - 401: bad user_id  
+- getProductsInCart(user_id: uint64): api/cart/get_products_in_cart
+  Gets ploduct list in cart
+  Ret codes:
+  - 200 - OK
+    JSON:
+    [ProductPreviewWithSize (size field added), number: uint64]
+  - 401 - bad user_id
+
+### Common API
+- likeProduct(user_id: uint64, product_id: uint64, like: bool): api/cart/like_product
+  Ret codes:
+  - 200 - OK
+  - 400 - bad product_id
+  - 401 - bad user_id
+
+### Favorites API
+- getFavoritesList(user_id: uint64): api/favorites/get_product_list
+  Ret codes:
+  - 200 - OK
+    JSON:
+    [ProductPreview]
+  - 401 - bad user_id
+    
+### Home API
+- get_recomended_products(user_id: uint64): api/home/recomended_products
+  Random previews
+  Ret codes:
+  - 200
+    JSON:
+    [ProductPreview] (without_size)
+  - 401 - bad user_id
+- get_promotions(user_id: uint64): api/home/get_promotions
+  Random list of links somewhere...
+  Ret codes:
+  - 200
+    JSON:
+    [Promotion]
+    Promotion:
+    - id: uint64
+    - Image: Base64
+    - Link: url
+  - 401: bad user_id
+  
 
 ## Additional notes
 

@@ -8,12 +8,15 @@
 import Foundation
 
 class StubAPI {
-    let userId: UInt64 = 0
-    let loadingDurationSec = 3.0
+    let loadingDurationSec = 1
 
     func waitBeforeReturn() async -> Void {
         do {
             try await Task.sleep(for: .seconds(loadingDurationSec))
+        }
+        // TODO: Is it possible on URL Requests?
+        catch is CancellationError {
+            print("Cancelled")
         }
         catch {
             assert(false)

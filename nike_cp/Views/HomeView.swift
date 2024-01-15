@@ -19,8 +19,18 @@ struct HomeView : View {
                 }
                 Text("The latest arrivals from\n Nike").font(.system(size: 32)).foregroundColor(.gray)
                 Spacer()
+                ScrollView {
+                    HomeRecomendGalleryView(userInfo: $userInfo)
+                    HomeProductPromotionView()
+                }
+                
             }.padding([.leading, .trailing], nil)
-            
         }
+    }
+}
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView(userInfo: .constant(UserInfo(usrID: 0, name: "Carl")))
     }
 }

@@ -23,6 +23,7 @@ struct ImgWithTextView : View {
                 img
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .frame(maxHeight: 170.0)
                
                 Spacer()
             }

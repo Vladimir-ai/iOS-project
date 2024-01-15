@@ -11,7 +11,9 @@ import SwiftUI
 struct nike_cpApp: App {
     var body: some Scene {
         WindowGroup {
-            RootView()
+            VStack {
+                StartView()
+            }
         }
     }
 }
